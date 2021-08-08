@@ -27,12 +27,18 @@ button{
     padding:5px;
     width:50px;
     cursor:pointer;
+    transition:color 0.3s;
 }
+
+button:hover {
+    color:white;
+}
+
 #button_home {
     left:20px;
    }
    
-   #button_work{
+#button_work{
     
     left:20px;
     
