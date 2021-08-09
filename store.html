@@ -17,7 +17,66 @@
     <button id="button_cart" value = 0>Cart (0)</button>
 </header>
     
-<div id = "cart-cont" ></div>
+
+
+
+
+
+
+
+
+<div id = "cart-cont" >
+
+    <div id = "cart"> 
+
+        <h2 id = "empty-cart"> CART IS EMPTY </h2>
+
+        <div class = "cart-item">
+
+            
+            <div class = "item-name-cont">
+                <a class = item-name> TEST ITEM </a>
+            </div>
+            <div class = "quant-price">
+
+                <a class = quantity>0</a>
+                <!--  Will make the select sitution look better later-->
+                <select>    
+                    <option> 0 </option>
+                    <option> 1 </option>
+                    <option> 2 </option>
+                    <option> 3 </option>
+                    <option> 4 </option>
+                    <option> 5 </option>
+                    <option> 6 </option>
+                    <option> 7 </option>
+                    <option> 8 </option>
+                    <option> 9 </option>
+                    <option> 10 </option>
+                </select>  
+            
+                <a class = "item-total" value = 10> $10</a>
+            
+            </div>
+            
+            <div class = "subtotal">
+                <a>SUBTOTAL $</a><a>10</a>
+
+            
+            </div>
+            
+            <!-- 
+            <div class = "subtotal">
+             <a>POSTAGE $</a><a>10</a>
+            </div>
+            
+        -->
+        
+
+    </div>
+
+
+</div>
 <!--         
     <div> for sale items here. use class's over id's as much as possible for easy upates in the future
 -->
@@ -31,14 +90,33 @@
     cartButton = document.getElementById("button_cart");
     cartButton.addEventListener("click", function() { 
         cart =  document.getElementById('cart-cont')
-        if (cart.style.display == "block"){
-        cart.style.display = "none";   
-    } 
+        
+        if (cart.style.right == "0px"){
+            
+            cart.style.right = "-90vw";
+    
+        }
         else{
-        cart.style.display = "block";
-    }
+            cart.style.right = "0px";
+           
+        }
+
+       
+        
+
+
+        //if (cart.style.display == "block"){
+        //cart.style.display = "none";   
+    //} 
+        //else{
+        //cart.style.display = "block";
+    //}
 }
 )
+
+function renderCart(cartId){
+    cart = document.getElementById("cart")
+}
 
 </script>
 
