@@ -17,16 +17,7 @@
     <button id="button_cart" value = 0>Cart (0)</button>
 </header>
     
-
-
-
-
-
-
-
-
 <div id = "cart-cont" >
-
     <div id = "cart"> 
 
         <h2 id = "empty-cart"> CART IS EMPTY </h2>
@@ -77,9 +68,7 @@
 
 
 </div>
-<!--         
-    <div> for sale items here. use class's over id's as much as possible for easy upates in the future
--->
+
 
 
 
@@ -92,32 +81,13 @@
         cart =  document.getElementById('cart-cont')
         
         if (cart.style.right == "0px"){
-            
-            cart.style.right = "-90vw";
-    
+             cart.style.right = "-90vw";
         }
         else{
             cart.style.right = "0px";
-           
         }
-
-       
-        
-
-
-        //if (cart.style.display == "block"){
-        //cart.style.display = "none";   
-    //} 
-        //else{
-        //cart.style.display = "block";
-    //}
-}
-)
-
-function renderCart(cartId){
-    cart = document.getElementById("cart")
-}
-
+    })
+    
 </script>
 
 </html>
