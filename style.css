@@ -27,18 +27,12 @@ button{
     padding:5px;
     width:50px;
     cursor:pointer;
-    transition:color 0.3s;
 }
-
-button:hover {
-    color:white;
-}
-
 #button_home {
     left:20px;
    }
    
-#button_work{
+   #button_work{
     
     left:20px;
     
@@ -49,8 +43,6 @@ button:hover {
     right:90px;
     
 }
-
-
 
 #button_about {
     z-index: 3;
@@ -63,18 +55,19 @@ button:hover {
     float:right;
     right:20px;
     bottom:20px;
-    
+    z-index: 10;
 }
 
-#cart-cont:hover{
+#cart-cont{
     z-index: 1;
-    display: block;
+    display: none;
     position: absolute;
-    width: 50vw;
+    min-width: 300px;
+    width: 30vw;
+    max-width: 80vw;
     min-height: 100vh;
-    bottom: 5px;
-    right: 5px;
+    bottom: 0px;
+    right: 0px;
     overflow-y: scroll;
-    border-left: dashed;
-
+    background: salmon;
 }
