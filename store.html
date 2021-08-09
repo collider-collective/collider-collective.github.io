@@ -26,18 +26,16 @@
 
 </body>
 <script>
-
+    //Toggles cart visablily when cart-botton is clicked
+    //
     cartButton = document.getElementById("button_cart");
-    
-    cartButton.addEventListener("click", function() {
-        console.log("cart")
+    cartButton.addEventListener("click", function() { 
         cart =  document.getElementById('cart-cont')
-        
         if (cart.style.display == "block"){
         cart.style.display = "none";   
     } 
         else{
-        cart.style.display = "block"
+        cart.style.display = "block";
     }
 }
 )
