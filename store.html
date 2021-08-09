@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="js/colliderCart.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -13,22 +14,10 @@
     <a href="index.html"><button id="button_home">Home</button></a>
     <a href="work.html"><button id="button_work">Work</button></a>
     <a href="about.html"><button id="button_about">About</button></a>
-
-    <div id = "cart-cont">
     <button id="button_cart" value = 0>Cart (0)</button>
-    
-    
-    <!-- build out some sort of table / list of cart items 
-    
-        make demo then build w. js-->
-    
-    
-    
-    </div>
-
-</div>
 </header>
     
+<div id = "cart-cont" ></div>
 <!--         
     <div> for sale items here. use class's over id's as much as possible for easy upates in the future
 -->
@@ -36,4 +25,23 @@
 
 
 </body>
+<script>
+
+    cartButton = document.getElementById("button_cart");
+    
+    cartButton.addEventListener("click", function() {
+        console.log("cart")
+        cart =  document.getElementById('cart-cont')
+        
+        if (cart.style.display == "block"){
+        cart.style.display = "none";   
+    } 
+        else{
+        cart.style.display = "block"
+    }
+}
+)
+
+</script>
+
 </html>
