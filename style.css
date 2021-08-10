@@ -17,6 +17,20 @@ a {
     cursor:crosshair;
 }
 
+#info {
+    position:absolute;
+    width:95vw;
+    top:96%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:none;
+}
+
+#info p {
+    font-family: Helvetica;
+    font-size: 11px;
+}
+
 button{
     font-size: 11px;
     font-family: Helvetica;

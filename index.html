@@ -9,19 +9,40 @@
 </head>
 <body>
 
-
-<div id="logo">
-    <img src="col.svg">
-</div>
-
 <header>
 
     <a href="store.html"><button  id="button_store">Store</button></a>
     <a href="work.html"><button  id="button_work">Work</button></a>
     <a href="about.html"><button  id="button_about">About</button></a>
-
-</header>
     
+</header>
+
+
+<div id="logo">
+    <img src="col.svg" onmouseover="showDiv('info')" onmouseout="hideDiv('info')">
+</div>
+
+
+<div id="info">
+    <p>(pink) Collider. Sophie Spence (born Victoria, Australia), Zach Micallef (Victoria, Australia) Maud Freeman (Queensland, Australia) & Adrian J Song (Shah Alam, Malaysia) are artists living and working on the unceded land of the Boon Wurrung & Woi Wurrung language groups of the Eastern Kulin Nations.  Together they Formed the Collider artist collective in late 2020, as a means to question, examine, and discuss the ongoing violence of colonisation.</p>
+</div>
+
+
+<script>
+
+    function hideDiv(divId){
+        var img=document.getElementById(divId);
+        img.style.display='none';
+        
+    }
+    
+    function showDiv(divId){
+        var img=document.getElementById(divId);
+        img.style.display='inherit';
+    }
+
+</script>
+
 </body>
 
 </html>
