@@ -170,7 +170,7 @@ button:hover{
 
 /* store items */
 
-#store-container-top {
+.store-container-top {
     display:flex;
     flex:1,1;
     flex-wrap: wrap;
@@ -182,7 +182,7 @@ button:hover{
     border-bottom:1px black solid;
 }
 
-#store-container {
+.store-container {
     display:flex;
     flex:1,1,1;
     flex-wrap: wrap;
@@ -193,13 +193,13 @@ button:hover{
     border-bottom:1px black solid;
 }
 
-#store-wrapper p {
+#store-wrapper p{
     font-family: Helvetica;
     font-weight: 200;
     font-size: 0.7vw;
 }
 
-#store-top {
+.store-top {
     display:flex;
     flex-direction: row;
     width: 30vw;
@@ -208,7 +208,7 @@ button:hover{
     align-items: center;
 }
 
-#store-center {
+.store-center {
     display:flex;
     flex-direction: row;
     margin-left: -30vw;
@@ -219,7 +219,7 @@ button:hover{
     align-items: center;
 }
 
-#store-bottom {
+.store-bottom {
     display:flex;
     flex-direction: row;
     margin-left: -30vw;
@@ -230,14 +230,14 @@ button:hover{
     align-items: center;
 }
 
-#store-bottom button {
+.store-bottom button {
     transform:translate(-100%,-50%);
     width:70px;
     font-size: 0.7vw;
     font-weight: 200;
 }
 
-#store-images {
+.store-images {
     display:flex;
     flex-wrap: wrap;
     position:absolute;
@@ -246,7 +246,7 @@ button:hover{
     transform:translate(0,-50%);
 }
 
-#store-images img {
+.store-images img {
     max-width:160px;
     padding:15px;
 
@@ -264,11 +264,11 @@ button:hover{
     width:30vw;
 }
 
-#store-container {
+.store-container {
     display:none;
 }
 
-#store-wrapper {
+.store-wrapper {
     display:none;
 }
 
