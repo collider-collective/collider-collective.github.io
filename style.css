@@ -260,6 +260,10 @@ button:hover{
 /* store no work on mobile (yet) */
 @media only screen and (max-device-width : 1024px) {
 
+#logo {
+    width:30vw;
+}
+
 #store-container {
     display:none;
 }
