@@ -41,27 +41,39 @@ button{
     padding:5px;
     width:50px;
     cursor:pointer;
+    transition:color 0.3s;
 }
+
+button:hover{
+    color:white;
+}
+
 #button_home {
     left:20px;
+    z-index: 10;
+    background-color: white;
 }
    
-   #button_work{
-    
+#button_work{
     left:20px;
+    z-index: 10;
+    background-color: white;
     
 }
 
 #button_store {
     float:right;
     right:90px;
+    z-index: 10;
+    background-color: white;
     
 }
 
 #button_about {
-    z-index: 3;
     float:right;
     right:20px;
+    z-index: 10;
+    background-color: white;
     
 }
 
@@ -70,6 +82,7 @@ button{
     right:20px;
     bottom:20px;
     z-index: 10;
+    background-color: white;
 }
 
 #cart-cont{
