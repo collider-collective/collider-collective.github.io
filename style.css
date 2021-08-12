@@ -184,7 +184,7 @@ button:hover{
 
 #store-container {
     display:flex;
-    flex:1,1;
+    flex:1,1,1;
     flex-wrap: wrap;
     margin-left:50%;
     transform:translate(-50%,-50%);
@@ -248,8 +248,45 @@ button:hover{
 
 #store-images img {
     max-width:160px;
-    min-width: auto;
     padding:15px;
+
 }
 
+#mobile_store {
+    display:none;
+}
+
+
+/* store no work on mobile (yet) */
+@media only screen and (max-device-width : 1024px) {
+
+#store-container {
+    display:none;
+}
+
+#store-wrapper {
+    display:none;
+}
+
+#cart-cont {
+    display:none;
+}
+
+#button_cart {
+    display:none;
+}
+
+#mobile_store {
+    display:inherit;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-family: Helvetica;
+    font-weight: 200;
+    font-size: 2.5vw;
+}
+
+
+}
 
