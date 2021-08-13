@@ -66,13 +66,13 @@ button:hover{
 
 #button_home {
     left:20px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
 }
    
 #button_work{
     left:20px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
     
 }
@@ -80,7 +80,7 @@ button:hover{
 #button_store {
     float:right;
     right:90px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
     
 }
@@ -88,7 +88,7 @@ button:hover{
 #button_about {
     float:right;
     right:20px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
     
 }
@@ -104,7 +104,7 @@ button:hover{
 #cart-cont{
     z-index: 2;
     display: block;
-    position: absolute;
+    position: fixed;
     width: 30vw;
     min-width: 300px;
     max-width: 80vw;
@@ -241,6 +241,7 @@ button:hover{
     width:70px;
     font-size: 0.7vw;
     font-weight: 200;
+    z-index:1;
 }
 
 .store-images-cont{
@@ -339,7 +340,7 @@ button:hover{
 
 .store-bottom button {
     font-size: 10px;
-    z-index:10;
+    z-index:1;
 }
 
 #button:hover {
