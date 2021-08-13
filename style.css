@@ -398,53 +398,34 @@ button:hover{
 
 
 
-/*
+
 @media only screen and (max-device-width : 1024px) {
 
 #logo {
     width:30vw;
 }
-
 #store-wrapper p{
     font-size: 8px;
 }
-
 .store-top {
     justify-content: space-evenly;
 }
-
 .store-center {
     justify-content: space-evenly;
-
 }
-
 .store-bottom {
     justify-content: space-evenly;
 }
-
 .store-info{
     width: 100vw;
     max-height: 50vh;
     justify-content: flex-start;
 }
-
 .store-bottom button {
     font-size: 10px;
     z-index:1;
 }
-
 #button:hover {
     color:black;
 }
-
-#work-container {
-   grid-row-gap: 10px;
-   grid-template-rows: (1fr,1fr,1fr,1fr,1fr,400vh); 
 }
-
-#work-container #div11 {
-    font-size: 8.5px;
-    transform:translate(0,-25%);
-}
-
-}*/
