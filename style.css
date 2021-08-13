@@ -342,4 +342,8 @@ button:hover{
     z-index:10;
 }
 
+#button-cart:hover {
+    color:black;
+}
+
 }
