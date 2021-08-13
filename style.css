@@ -353,12 +353,13 @@ button:hover{
     z-index: 10;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     
 }
 
 #work-container img{
     max-width: 40vw;
-    max-height: 85vh;
+    max-height: 65vh;
     margin: 20px;
 }
 
