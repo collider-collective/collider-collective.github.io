@@ -61,18 +61,18 @@ button{
 }
 
 button:hover{
-    color:white;
+    color:rgb(70, 70, 70);
 }
 
 #button_home {
     left:20px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
 }
    
 #button_work{
     left:20px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
     
 }
@@ -80,7 +80,7 @@ button:hover{
 #button_store {
     float:right;
     right:90px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
     
 }
@@ -88,7 +88,7 @@ button:hover{
 #button_about {
     float:right;
     right:20px;
-    z-index: 10;
+    z-index: 1;
     background-color: white;
     
 }
@@ -231,7 +231,7 @@ button:hover{
     width: 30vw;
     max-height: 30vh;
     margin-bottom: 5px;
-    }
+}
 
 #store-wrapper p{
     font-family: Helvetica;
@@ -240,12 +240,15 @@ button:hover{
 }
 
 
+<<<<<<< HEAD
 .quant-selector{
     border-radius: 50px;
     
 }
 
 
+=======
+>>>>>>> main
 .store-images img {
     max-height: 160px;
     max-width:160px;
@@ -277,6 +280,7 @@ button:hover{
     width:70px;
     font-size: 0.7vw;
     font-weight: 200;
+    z-index:1;
 }
 
 .store-images-cont{
@@ -292,7 +296,6 @@ button:hover{
     justify-content: flex-end;
     flex-wrap: wrap;
     float: right;
-    
     max-width: 50vw;
     
    
@@ -302,50 +305,96 @@ button:hover{
 .store-images img {
     min-width: 75px;
     max-width:160px;
+    max-height:160px;
     padding:15px;
 
 }
 
-#mobile_store {
-    display:none;
+
+/* WORKS PAGE */
+
+
+#grid-wrapper {
+    position:relative;
+    z-index: -1;
+}
+
+#work-container {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(6, 1fr); 
+    grid-column-gap: 5px;
+    grid-row-gap: 100px;
+}
+
+#work-container #div1 { grid-area: 1 / 1 / 2 / 2; max-width:100%;} 
+#work-container #div6 { grid-area: 1 / 2 / 2 / 3; max-width:100%;} 
+#work-container #div10 { grid-area: 2 / 1 / 3 / 2; max-width:100%;} 
+#work-container #div5 { grid-area: 2 / 2 / 3 / 3; max-width:100%;} 
+#work-container #div3 { grid-area: 3 / 1 / 4 / 2; max-width:100%;} 
+#work-container #div2 { grid-area: 3 / 2 / 4 / 3; max-width:100%;} 
+#work-container #div7 { grid-area: 4 / 1 / 5 / 2; max-width:100%;} 
+#work-container #div4 { grid-area: 4 / 2 / 5 / 3; max-width:100%;} 
+#work-container #div9 { grid-area: 5 / 1 / 6 / 2; max-width:100%;} 
+#work-container #div8 { grid-area: 5 / 2 / 6 / 3; max-width:100%;} 
+#work-container #div11 {
+    grid-area: 6 / 1 / 7 / 3;
+    font-family:helvetica;
+    font-size:16px;
+    font-weight: 200; 
+    padding:20px;
 }
 
 
 
-/* store no work on mobile (yet)
+
 @media only screen and (max-device-width : 1024px) {
 
 #logo {
     width:30vw;
 }
 
-.store-container {
-    display:none;
+#store-wrapper p{
+    font-size: 8px;
 }
 
-.store-wrapper {
-    display:none;
+.store-top {
+    justify-content: space-evenly;
 }
 
-#cart-cont {
-    display:none;
-}
-
-#button_cart {
-    display:none;
-}
-
-#mobile_store {
-    display:inherit;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-family: Helvetica;
-    font-weight: 200;
-    font-size: 2.5vw;
-}
-
+.store-center {
+    justify-content: space-evenly;
 
 }
- */
+
+.store-bottom {
+    justify-content: space-evenly;
+}
+
+.store-info{
+    width: 100vw;
+    max-height: 50vh;
+    justify-content: flex-start;
+}
+
+.store-bottom button {
+    font-size: 10px;
+    z-index:1;
+}
+
+#button:hover {
+    color:black;
+}
+
+#work-container {
+   grid-row-gap: 10px;
+   grid-template-rows: (1fr,1fr,1fr,1fr,1fr,400vh); 
+}
+
+#work-container #div11 {
+    font-size: 8.5px;
+    transform:translate(0,-25%);
+}
+
+
+}
