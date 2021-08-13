@@ -22,17 +22,17 @@ a {
     
     top: 0px;
     width: 100vw;
-    height: 100vh;
+    min-height: 70vh;
     
     
 }
 
 #water-flex img{
     transition-duration: 5s;
-    opacity: 0;
+    opacity: 0.05;
     margin: 5px;
     max-width: 150px;
-    min-width: 75px;
+    
     
 }
 
@@ -138,7 +138,7 @@ button:hover{
     border-color: gray;
 }
 
-#empty-cart{
+.empty-cart{
     font-size: 20px;
     font-family: Helvetica;
     margin-top: 30px;
@@ -150,19 +150,19 @@ button:hover{
 }
 
 .cart-item{
+    padding: 0.01px;
     margin-top: 5px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-    box-shadow: 5px, 5px, 5px, grey;
+    box-shadow: 5px 5px 5px grey;
+    transition-duration: 0.25s;
     
     
     
 }
-.cart-item{
-    box-shadow: 5px, 5px, 5px, grey;
-}
+
 
 .quantity{
     
@@ -215,6 +215,9 @@ button:hover{
     position: relative;
     width: 25px;
     border-radius: 25px;
+    margin-right: 5px;
+    box-shadow: 1.5px 1.5px 1.5px grey;
+    
     
 }
 
@@ -260,6 +263,7 @@ button:hover{
 
 .quant-selector{
     border-radius: 50px;
+    transition-duration: 2s;
     
 }
 
@@ -295,6 +299,7 @@ button:hover{
     font-size: 0.7vw;
     font-weight: 200;
     z-index:1;
+    transition-duration: 0.5s;
 }
 
 .store-images-cont{
