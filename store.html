@@ -161,11 +161,11 @@
     
     function addToCart(object){
 
-    const item = [object.parentNode.parentNode.parentNode.getAttribute("name"),object.parentNode.parentNode.parentNode.getAttribute("value"),1]; 
+    const item = new Array(object.parentNode.parentNode.parentNode.getAttribute("name"),object.parentNode.parentNode.parentNode.getAttribute("value"),1); 
 
     
     //if local storage doesn't exist, initaillise value of 0
-    if (localStorage.getItem(object.parentNode.parentNode.parentNode.getAttribute("name")) === null) {
+    if (localStorage.getItem(object.parentNode.parentNode.parentNode.getAttribute("name")) == null) {
         localStorage.setItem("item-"+object.parentNode.parentNode.parentNode.getAttribute("name"), item); 
         
 
@@ -198,137 +198,149 @@
 function updateCart(){
 
 //clear cart contents
-cart = document.getElementById("cart")
-
-cart.innerHTML = '';
+    cart = document.getElementById("cart")
+    cart.innerHTML = '';
 
 //checks local storage for cart items
-for (var i = 0; i < localStorage.length; i++) {
+    for (var i = 0; i < localStorage.length; i++) {
     
-    
-    console.log(localStorage.key(i).substr(0, 4))
-    
-    if (localStorage.key(i).substr(0, 4) == "item") {
+        if (localStorage.key(i).substr(0, 4) == "item") {
         
-        itemKey = localStorage.key(i);
-        itemData = localStorage.getItem(itemKey);
-        itemData = itemData.split(",");
-        
-        //[3]=quant
-        
-        if (parseInt(itemData[2]) > 0 ){
+            itemKey = localStorage.key(i);
+            itemData = localStorage.getItem(itemKey);
+            itemData = itemData.split(",");
             
-            var cartItem = document.createElement("DIV");
-            cartItem.className = "cart-item";
-            cart.appendChild(cartItem);
+            //[3]=quant
             
-            var itemNameCont  = document.createElement("DIV");
-            itemNameCont.className = "item-name-cont";
-            cartItem.appendChild(itemNameCont);
-            
-            
-            var itemName = document.createElement("A");
-            itemName.className = "item-name";
-            itemName.innerHTML = itemData[0];
-            itemNameCont.appendChild(itemName);
-            
-            var quantPrice = document.createElement("DIV");
-            quantPrice.className = "quant-price";
-            cartItem.appendChild(quantPrice);
-            
-            var quantCont = document.createElement("DIV");
-            quantCont.className = "quant-cont";
-            quantPrice.appendChild(quantCont);
-            
-            
-            
-            var selectMinus = document.createElement("BUTTON");
-            selectMinus.className = "quant-selector";
-            selectMinus.innerHTML = "-";
-            quantCont.appendChild(selectMinus);
-            
+            if (parseInt(itemData[2]) > 0 ){
+                
+                var cartItem = document.createElement("DIV");
+                cartItem.className = "cart-item";
+                cart.appendChild(cartItem);
+                
+                var itemNameCont  = document.createElement("DIV");
+                itemNameCont.className = "item-name-cont";
+                cartItem.appendChild(itemNameCont);
+                
+                
+                var itemName = document.createElement("A");
+                itemName.className = "item-name";
+                itemName.innerHTML = itemData[0];
+                itemNameCont.appendChild(itemName);
+                
+                var quantPrice = document.createElement("DIV");
+                quantPrice.className = "quant-price";
+                cartItem.appendChild(quantPrice);
+                
+                var quantCont = document.createElement("DIV");
+                quantCont.className = "quant-cont";
+                quantPrice.appendChild(quantCont);
+                
+                
+                
+                var selectMinus = document.createElement("BUTTON");
+                selectMinus.className = "quant-selector";
+                selectMinus.innerHTML = "-";
+                selectMinus.setAttribute('onclick','selector(this)')
+                quantCont.appendChild(selectMinus);
+                
 
-            var quantity = document.createElement("A");
-            quantity.className = "quantity";
-            quantity.innerHTML = itemData[2];
-            quantCont.appendChild(quantity);
+                var quantity = document.createElement("A");
+                quantity.className = "quantity";
+                quantity.innerHTML = itemData[2];
+                quantCont.appendChild(quantity);
 
-            var selectPlus = document.createElement("BUTTON");
-            selectPlus.className = "quant-selector";
-            selectPlus.innerHTML = "+";
-            quantCont.appendChild(selectPlus);
+                var selectPlus = document.createElement("BUTTON");
+                selectPlus.className = "quant-selector";
+                selectPlus.innerHTML = "+";
+                selectPlus.setAttribute('onclick','selector(this)')
+                quantCont.appendChild(selectPlus);
+                
             
+                
           
             
-            selectors()
             
             
             
             
             
-            
-            //add event listner for selection change --> update cart
+                //add event listner for selection change --> update cart
 
 
-            var itemTotal = document.createElement("A");
-            itemTotal.className = "item-total";
+                var itemTotal = document.createElement("A");
+                itemTotal.className = "item-total";
             
-            //update get price
-            var price = parseInt(itemData[2])*parseInt(itemData[1]);
-            itemTotal.innerHTML = "$"+(price);
+                //update get price
+                var price = parseInt(itemData[2])*parseInt(itemData[1]);
+                itemTotal.innerHTML = "$"+(price);
             
-            quantPrice.appendChild(itemTotal);
+                quantPrice.appendChild(itemTotal);
+
+                var subTotal = document.createElement("A");
+                    subTotal.className = "subtotal";
+                    
+                    
+                    itemTotals = document.getElementsByClassName("item-total");
+                    
+                    subTotalPrice = 0;
+                    
+                    for (let i = 0; itemTotals.length > i; i++){
+                        
+                        x = itemTotals[i].innerHTML.substring(1);
+                        
+                       
+                        subTotalPrice = subTotalPrice + parseInt(x);
 
 
-            
+                    }
+                    subTotal.innerHTML = "SUB-TOTAL: $"+subTotalPrice;
 
-    //<div class = "subtotal">
-    //    <a>SUBTOTAL $</a><a>10</a>
-    //</div>
-
-            
-            
+                    cart.appendChild(subTotal);
+    
        
         }
 
     }
     
+   }
+    document.getElementById("button_cart").innerHTML = "Cart ("+ document.getElementsByClassName("cart-item").length + ")"  
+}
+
+
+function selector(object){
+
+    cartItem = object.parentElement.parentElement.parentElement;
+
     
 
-}
-}
+    cartItemName = cartItem.querySelector(".item-name").innerHTML;
 
+    localData = localStorage.getItem("item-"+cartItemName).split(",");
 
-function selectors(){
-
-    selectorsa = document.getElementsByClassName("quant-selector");
-            for (let i = 0; selectorsa.length > i; i++){
-
-                selector = selectorsa[i]
-                
-                selector.addEventListener("click", function(){
-
-                    console.log(selector.parentNode)
-                
-                
-                
-                
-                })
-
-
-            }
-}
-
-function quantSelectors(itemName){
-        
-        
-        console.log(itemName);
-
-        currentQuant = object.parentElement.querySelector(".quantity").innerHTML;
-        newQuant = currentQuant +1;
-        key = "item-"+object.parentNode.parentNode.parentElement.querySelector(".item-name").innerHTML;
-        console.log(localStorage.getItem(key));
+    if(object.innerHTML == "+"){
+        localData[2] = parseInt(localData[2]) + 1; 
     }
+    else{
+        localData[2] = parseInt(localData[2]) - 1;
+    }
+
+    localStorage.setItem("item-"+cartItemName, localData);
+    
+    
+       
+    updateCart()
+    
+    
+
+         
+
+
+
+
+
+}
+
  
 
     
