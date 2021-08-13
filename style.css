@@ -274,9 +274,9 @@ button:hover{
 
 /* WORKS PAGE */
 
+
 #grid-wrapper {
     position:relative;
-    top:100px;
     z-index: -1;
 }
 
@@ -350,11 +350,12 @@ button:hover{
 #work-container {
    grid-row-gap: 10px;
    max-height: 300vh;
+   overflow-y: hidden;
 }
 
 #work-container #div11 {
     font-size: 9px;
-    transform:translate(0,-30%);
+    transform:translate(0,-40%);
 }
 
 
