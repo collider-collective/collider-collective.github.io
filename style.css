@@ -349,13 +349,12 @@ button:hover{
 
 #work-container {
    grid-row-gap: 10px;
-   max-height: 300vh;
-   overflow-y: hidden;
+   grid-template-rows: repeat(6, 50vh); 
 }
 
 #work-container #div11 {
     font-size: 9px;
-    transform:translate(0,-40%);
+    transform:translate(0,-25%);
 }
 
 
