@@ -110,8 +110,8 @@ button:hover{
     max-width: 80vw;
     min-height: 102vh;
     bottom: 0px;
-    /*right: -80vw;*/
-    right:0px;
+    right: -80vw;
+    
     overflow-y: scroll;
     background: rgb(233, 226, 226);
     transition-duration: 1s;
@@ -204,7 +204,7 @@ button:hover{
     float: right;   
     font-family: Helvetica;
     margin-top: 30px;
-    margin-right: 20px;
+    margin-right: 34px;
 }
 
 #store-container-top{
@@ -234,15 +234,11 @@ button:hover{
 }
 
 
-<<<<<<< HEAD
 .quant-selector{
     border-radius: 50px;
     
 }
 
-
-=======
->>>>>>> main
 .store-images img {
     max-height: 160px;
     max-width:160px;
