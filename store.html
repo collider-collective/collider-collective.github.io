@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="js/colliderCart.js"></script>
     <title>Collider: Store</title>
-
-
-
 </head>
 <body>
 
@@ -163,7 +160,7 @@
 
     const item = [object.parentNode.parentNode.parentNode.getAttribute("name"),object.parentNode.parentNode.parentNode.getAttribute("value"),1]; 
 
-    
+
     //if local storage doesn't exist, initaillise value of 0
     if (localStorage.getItem(object.parentNode.parentNode.parentNode.getAttribute("name")) === null) {
         localStorage.setItem("item-"+object.parentNode.parentNode.parentNode.getAttribute("name"), item); 
@@ -205,18 +202,27 @@ cart.innerHTML = '';
 //checks local storage for cart items
 for (var i = 0; i < localStorage.length; i++) {
     
-    
+    console.log("here")
     console.log(localStorage.key(i).substr(0, 4))
     
     if (localStorage.key(i).substr(0, 4) == "item") {
         
         itemKey = localStorage.key(i);
+
+
+        
         itemData = localStorage.getItem(itemKey);
         itemData = itemData.split(",");
         
+
+        
         //[3]=quant
         
-        if (parseInt(itemData[2]) > 0 ){
+        if ( parseInt(itemData[2]) > 0 ){
+            
+           
+        
+            
             
             var cartItem = document.createElement("DIV");
             cartItem.className = "cart-item";
@@ -247,7 +253,6 @@ for (var i = 0; i < localStorage.length; i++) {
             selectMinus.innerHTML = "-";
             quantCont.appendChild(selectMinus);
             
-
             var quantity = document.createElement("A");
             quantity.className = "quantity";
             quantity.innerHTML = itemData[2];
@@ -257,15 +262,6 @@ for (var i = 0; i < localStorage.length; i++) {
             selectPlus.className = "quant-selector";
             selectPlus.innerHTML = "+";
             quantCont.appendChild(selectPlus);
-            
-          
-            
-            selectors()
-            
-            
-            
-            
-            
             
             //add event listner for selection change --> update cart
 
@@ -297,39 +293,7 @@ for (var i = 0; i < localStorage.length; i++) {
 
 }
 }
-
-
-function selectors(){
-
-    selectorsa = document.getElementsByClassName("quant-selector");
-            for (let i = 0; selectorsa.length > i; i++){
-
-                selector = selectorsa[i]
-                
-                selector.addEventListener("click", function(){
-
-                    console.log(selector.parentNode)
-                
-                
-                
-                
-                })
-
-
-            }
-}
-
-function quantSelectors(itemName){
-        
-        
-        console.log(itemName);
-
-        currentQuant = object.parentElement.querySelector(".quantity").innerHTML;
-        newQuant = currentQuant +1;
-        key = "item-"+object.parentNode.parentNode.parentElement.querySelector(".item-name").innerHTML;
-        console.log(localStorage.getItem(key));
-    }
- 
+updateCart()
 
     
 </script>
