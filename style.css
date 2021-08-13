@@ -17,6 +17,24 @@ a {
     cursor:crosshair;
 }
 
+#water-flex{
+    display: flex;
+    flex-wrap: nowrap;
+    background: red;
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    
+    
+}
+
+#water-flex img{
+    opacity: 0;
+    margin: 5px;
+    max-width: 150px;
+    min-width: 75px;
+    
+}
 
 /*Added so we donn't need store-container-top
 

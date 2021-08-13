@@ -199,40 +199,6 @@ function updateCart(){
     cart.innerHTML = '';
 
 //checks local storage for cart items
-<<<<<<< HEAD
-for (var i = 0; i < localStorage.length; i++) {
-    
-    console.log("here")
-    console.log(localStorage.key(i).substr(0, 4))
-    
-    if (localStorage.key(i).substr(0, 4) == "item") {
-        
-        itemKey = localStorage.key(i);
-
-
-        
-        itemData = localStorage.getItem(itemKey);
-        itemData = itemData.split(",");
-        
-
-        
-        //[3]=quant
-        
-        if ( parseInt(itemData[2]) > 0 ){
-            
-           
-        
-            
-            
-            var cartItem = document.createElement("DIV");
-            cartItem.className = "cart-item";
-            cart.appendChild(cartItem);
-            
-            var itemNameCont  = document.createElement("DIV");
-            itemNameCont.className = "item-name-cont";
-            cartItem.appendChild(itemNameCont);
-            
-=======
     for (var i = 0; i < localStorage.length; i++) {
     
         if (localStorage.key(i).substr(0, 4) == "item") {
@@ -240,16 +206,9 @@ for (var i = 0; i < localStorage.length; i++) {
             itemKey = localStorage.key(i);
             itemData = localStorage.getItem(itemKey);
             itemData = itemData.split(",");
->>>>>>> CART-JS
             
             //[3]=quant
             
-<<<<<<< HEAD
-            var quantity = document.createElement("A");
-            quantity.className = "quantity";
-            quantity.innerHTML = itemData[2];
-            quantCont.appendChild(quantity);
-=======
             if (parseInt(itemData[2]) > 0 ){
                 
                 var cartItem = document.createElement("DIV");
@@ -287,7 +246,6 @@ for (var i = 0; i < localStorage.length; i++) {
                 quantity.className = "quantity";
                 quantity.innerHTML = itemData[2];
                 quantCont.appendChild(quantity);
->>>>>>> CART-JS
 
                 var selectPlus = document.createElement("BUTTON");
                 selectPlus.className = "quant-selector";
@@ -296,21 +254,6 @@ for (var i = 0; i < localStorage.length; i++) {
                 quantCont.appendChild(selectPlus);
                 
             
-<<<<<<< HEAD
-            //add event listner for selection change --> update cart
-
-
-            var itemTotal = document.createElement("A");
-            itemTotal.className = "item-total";
-            
-            //update get price
-            var price = parseInt(itemData[2])*parseInt(itemData[1]);
-            itemTotal.innerHTML = "$"+(price);
-            
-            quantPrice.appendChild(itemTotal);
-
-
-=======
                 
           
             
@@ -318,7 +261,6 @@ for (var i = 0; i < localStorage.length; i++) {
             
             
             
->>>>>>> CART-JS
             
                 //add event listner for selection change --> update cart
 
@@ -369,11 +311,6 @@ function selector(object){
 
     
 
-<<<<<<< HEAD
-}
-}
-updateCart()
-=======
     cartItemName = cartItem.querySelector(".item-name").innerHTML;
 
     localData = localStorage.getItem("item-"+cartItemName).split(",");
@@ -402,7 +339,6 @@ updateCart()
 }
 
  
->>>>>>> CART-JS
 
     
 </script>
