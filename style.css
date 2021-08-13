@@ -339,6 +339,7 @@ button:hover{
 
 .store-bottom button {
     font-size: 10px;
+    z-index:10;
 }
 
 }
