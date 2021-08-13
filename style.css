@@ -102,13 +102,13 @@ button:hover{
 }
 
 #cart-cont{
-    z-index: 1;
+    z-index: 2;
     display: block;
     position: absolute;
     width: 30vw;
     min-width: 300px;
     max-width: 80vw;
-    min-height: 100vh;
+    min-height: 102vh;
     bottom: 0px;
     right: -80vw;
     overflow-y: scroll;
@@ -250,14 +250,16 @@ button:hover{
     display: block;
     width: 100%;
     min-height:25vh;
-    z-index: 50;
+    
 
 }
 
 .store-images {
     display: flex;
+    justify-content: flex-end;
     flex-wrap: wrap;
     float: right;
+    
     max-width: 50vw;
     
    
