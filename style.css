@@ -223,16 +223,20 @@ button:hover{
 .store-top{
     display: flex;
     justify-content: space-between;
+    line-height: 8vh;
 }
 
 .store-center{
     display: flex;
     justify-content: space-between;
+    line-height: 8vh;
 }
 
 .store-bottom{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    line-height: 8vh;
 }
 
 .store-bottom button {
@@ -273,7 +277,7 @@ button:hover{
 
 
 
-/* store no work on mobile (yet) */
+/* store no work on mobile (yet)
 @media only screen and (max-device-width : 1024px) {
 
 #logo {
@@ -309,4 +313,4 @@ button:hover{
 
 
 }
-
+ */
