@@ -29,7 +29,7 @@
     <div id = "store-container-top" class = "store-container">
         
         <!-- made a block div for the store info to sit in-->
-        <div class ="store-info">
+        <div class ="store-info" value = "150" name = "Windows (2021)" >
             <div class="store-top">
                 <p>Adrian J. Song</p>
                 <p>150.00 AUD</p>
@@ -41,7 +41,7 @@
 
         <div  class="store-bottom">
             <p>50 pg, 80gsm Japanese Handmade Paper</p>
-            <p><button>Add to Cart</button></p>
+            <p><button onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -57,26 +57,61 @@
             </div>
         </div>
     </div>
+    <div class = "store-container">
+        
+        <!-- made a block div for the store info to sit in-->
+        <div class ="store-info" value = "1" name = "PROJECT" >
+            <div class="store-top">
+                <p>MAUD</p>
+                <p>1.00 AUD</p>
+            </div>
+
+            <div class="store-center">
+                <p>Windows (2021)</p>
+            </div>
+
+        <div  class="store-bottom">
+            <p>50 pg, 80gsm Japanese Handmade Paper</p>
+            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+        </div>
+    </div>
+        <!-- made a img-container as a block for the store-images flex box to sit in-->
+        <div class = "store-images-cont">
+            <div   class ="store-images">
+                <!-- no div needed, just img tags are fine-->
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+            </div>
+        </div>
+    </div>
+
 </div>
     
 
 <div id = "cart-cont" >
-    <div id = "cart"> 
 
+    <div id = "cart-header">
+
+
+    </div>     
+    <div id = "cart">
+
+<!--
         <h2 id = "empty-cart"> CART IS EMPTY </h2>
 
         <div class = "cart-item">
-
-            
             <div class = "item-name-cont">
                 <a class = item-name> TEST ITEM </a>
             </div>
             <div class = "quant-price">
 
                 <a class = quantity>0</a>
-                <!--  Will make the select look better later-->
+            Will make the select look better later
                 <select>    
-                    <option> 0 </option>
                     <option> 1 </option>
                     <option> 2 </option>
                     <option> 3 </option>
@@ -91,7 +126,7 @@
             
                 <a class = "item-total" value = 10> $10</a>
             
-            </div>
+            </div>-->
             
             <div class = "subtotal">
                 <a>SUBTOTAL $</a><a>10</a>
@@ -115,12 +150,41 @@
 </body>
 
 <script>
+    //remove this when page goes live
+    localStorage.clear()
+    
+    
+    //When add to cart is clicked
+    //check if local storage exist for item
+
+    
+    function addToCart(object){
+
+    const item = [object.parentNode.parentNode.parentNode.getAttribute("name"),object.parentNode.parentNode.parentNode.getAttribute("value"),1]; 
+
+
+    //if local storage doesn't exist, initaillise value of 0
+    if (localStorage.getItem(object.parentNode.parentNode.parentNode.getAttribute("name")) === null) {
+        localStorage.setItem("item-"+object.parentNode.parentNode.parentNode.getAttribute("name"), item); 
+        
+
+    }
+    
+   
+    updateCart()
+    }
+
+
+
+
     //Toggles cart visablily when cart-botton is clicked
     //
     cartButton = document.getElementById("button_cart");
     cartButton.addEventListener("click", function() { 
-        cart =  document.getElementById('cart-cont')
+    cart =  document.getElementById('cart-cont')
         
+        
+
         if (cart.style.right == "0px"){
              cart.style.right = "-90vw";
         }
@@ -128,6 +192,111 @@
             cart.style.right = "0px";
         }
     })
+
+
+function updateCart(){
+
+//clear cart contents
+cart = document.getElementById("cart")
+
+cart.innerHTML = '';
+
+//checks local storage for cart items
+for (var i = 0; i < localStorage.length; i++) {
+    
+    console.log("here")
+    console.log(localStorage.key(i).substr(0, 4))
+    
+    if (localStorage.key(i).substr(0, 4) == "item") {
+        
+        itemKey = localStorage.key(i);
+
+
+        
+        itemData = localStorage.getItem(itemKey);
+        itemData = itemData.split(",");
+        
+
+        
+        //[3]=quant
+        
+        if ( parseInt(itemData[2]) > 0 ){
+            
+           
+        
+            
+            
+            var cartItem = document.createElement("DIV");
+            cartItem.className = "cart-item";
+            cart.appendChild(cartItem);
+            
+            var itemNameCont  = document.createElement("DIV");
+            itemNameCont.className = "item-name-cont";
+            cartItem.appendChild(itemNameCont);
+            
+            
+            var itemName = document.createElement("A");
+            itemName.className = "item-name";
+            itemName.innerHTML = itemData[0];
+            itemNameCont.appendChild(itemName);
+            
+            var quantPrice = document.createElement("DIV");
+            quantPrice.className = "quant-price";
+            cartItem.appendChild(quantPrice);
+            
+            var quantCont = document.createElement("DIV");
+            quantCont.className = "quant-cont";
+            quantPrice.appendChild(quantCont);
+            
+            
+            
+            var selectMinus = document.createElement("BUTTON");
+            selectMinus.className = "quant-selector";
+            selectMinus.innerHTML = "-";
+            quantCont.appendChild(selectMinus);
+            
+            var quantity = document.createElement("A");
+            quantity.className = "quantity";
+            quantity.innerHTML = itemData[2];
+            quantCont.appendChild(quantity);
+
+            var selectPlus = document.createElement("BUTTON");
+            selectPlus.className = "quant-selector";
+            selectPlus.innerHTML = "+";
+            quantCont.appendChild(selectPlus);
+            
+            //add event listner for selection change --> update cart
+
+
+            var itemTotal = document.createElement("A");
+            itemTotal.className = "item-total";
+            
+            //update get price
+            var price = parseInt(itemData[2])*parseInt(itemData[1]);
+            itemTotal.innerHTML = "$"+(price);
+            
+            quantPrice.appendChild(itemTotal);
+
+
+            
+
+    //<div class = "subtotal">
+    //    <a>SUBTOTAL $</a><a>10</a>
+    //</div>
+
+            
+            
+       
+        }
+
+    }
+    
+    
+
+}
+}
+updateCart()
+
     
 </script>
 

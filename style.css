@@ -104,13 +104,14 @@ button:hover{
 #cart-cont{
     z-index: 2;
     display: block;
-    position: absolute;
+    position: fixed;
     width: 30vw;
     min-width: 300px;
     max-width: 80vw;
     min-height: 102vh;
     bottom: 0px;
-    right: -80vw;
+    /*right: -80vw;*/
+    right:0px;
     overflow-y: scroll;
     background: rgb(233, 226, 226);
     transition-duration: 1s;
@@ -126,7 +127,12 @@ button:hover{
     margin-left: 22px;
 }
 
+#cart-header{
+    height: 15vh;
+}
+
 .cart-item{
+    margin-top: 5px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -139,7 +145,8 @@ button:hover{
 .quantity{
     
     line-height: 45px;
-    margin-left: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
    
 }
 
@@ -160,19 +167,35 @@ button:hover{
 
 }
  .quant-price{
-
+    display: flex;
+    justify-content: space-between;
     font-family: Helvetica;
     height: 45px;
     border-style: solid;
     border-top: none;
-    
-    
     border-width: 2.5px;
     border-color: lightgray;
 
 }
 
+.quant-cont{
+    margin-left: 10px;
+    display: flex;
+    line-height: 45px;
+    max-width: 70% ;
+    
+    
+}
+.quant-cont button{
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    width: 25px;
+    border-radius: 25px;
+}
+
 .item-total{
+    display: block;
     float: right;
     margin-right: 20px;
     line-height: 45px;
@@ -211,10 +234,14 @@ button:hover{
 }
 
 
-
+.quant-selector{
+    border-radius: 50px;
+    
+}
 
 
 .store-images img {
+    max-height: 160px;
     max-width:160px;
     padding:15px;
 
