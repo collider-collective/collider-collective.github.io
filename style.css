@@ -61,7 +61,7 @@ button{
 }
 
 button:hover{
-    color:white;
+    color:rgb(70, 70, 70);
 }
 
 #button_home {
