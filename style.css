@@ -359,7 +359,7 @@ button:hover{
 
 #work-container img{
     max-width: 40vw;
-    min-width: 100px;
+    min-width: 15vw;
     max-height: 65vh;
     margin: 20px;
     object-fit:contain;
