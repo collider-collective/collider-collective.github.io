@@ -10,125 +10,53 @@
 </head>
 <body>
 
+
 <header>
     <a href="index.html"><button id="button_store">Home</button></a>
     <a href="work.html"><button id="button_work">Work</button></a>
     <a href="about.html"><button id="button_about">About</button></a>
-    <button id="button_cart" value = 0>Cart (0)</button>
 </header>
+
+
+    <button id="button_cart" value = 0>Cart (0)</button>
 
 <div id="mobile_store">
     <p>There is currently no Mobile functionality for our store. Please use a Desktop Computer for access.</p>
 </div>
 
 <div id="store-wrapper">
-    <div class = "store-container-top">
-        <div class="store-top">
-            <p>Adrian J. Song</p>
-            <p>150.00 AUD</p>
-        </div>
+    
+    <div id = "store-container-top" class = "store-container">
+        
+        <div class ="store-info">
+            <div class="store-top">
+                <p>Adrian J. Song</p>
+                <p>150.00 AUD</p>
+            </div>
 
-        <div class="store-center">
-            <p>Windows (2021)</p>
-        </div>
+            <div class="store-center">
+                <p>Windows (2021)</p>
+            </div>
 
         <div  class="store-bottom">
             <p>50 pg, 80gsm Japanese Handmade Paper</p>
             <p><button>Add to Cart</button></p>
         </div>
-        
-        <div   class ="store-images">
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
-        </div>
     </div>
-
-    <div class = "store-container">
-        <div class="store-top">
-            <p>Zachariah Micallef</p>
-            <p>150.00 AUD</p>
-        </div>
-
-        <div class="store-center">
-            <p>Passage (2021)</p>
-        </div>
-
-        <div  class="store-bottom">
-            <p>88 pg, 180GSM EcoStar+</p>
-            <p><button>Add to Cart</button></p>
-        </div>
         
-        <div   class ="store-images">
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
-        </div>
-    </div>
-
-    <div class = "store-container">
-        <div class="store-top">
-            <p>Maud Freeman</p>
-            <p>30.00 AUD</p>
-        </div>
-
-        <div class="store-center">
-            <p>Unidentified (2021)</p>
-        </div>
-
-        <div  class="store-bottom">
-            <p>50 pg, 180GSM EcoStar+</p>
-            <p><button>Add to Cart</button></p>
-        </div>
-        
-        <div   class ="store-images">
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
-        </div>
-    </div>
-
-    <div class = "store-container">
-        <div class="store-top">
-            <p>COLLIDER</p>
-            <p>50.00 AUD</p>
-        </div>
-
-        <div class="store-center">
-            <p>Manifesto 1 (2021)</p>
-        </div>
-
-        <div  class="store-bottom">
-            <p>30pg, 100GSM SilkHD+</p>
-            <p><button>Add to Cart</button></p>
-        </div>
-        
-        <div   class ="store-images">
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
-        </div>
-    </div>
-
-    <div class = "store-container">
-        <div class="store-top">
-            <p>Zachariah Micallef</p>
-            <p>100.00 AUD</p>
-        </div>
-
-        <div class="store-center">
-            <p>Array (2021)</p>
-        </div>
-
-        <div  class="store-bottom">
-            <p>200 pg, 180GSM EcoStar+</p>
-            <p><button>Add to Cart</button></p>
-        </div>
-        
-        <div   class ="store-images">
-            <div><img src="image-placeholder.jpg"></div>
-            <div><img src="image-placeholder.jpg"></div>
+        <div class = "store-images-cont">
+            <div   class ="store-images">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg">
+            </div>
         </div>
     </div>
 </div>
+    
 
 <div id = "cart-cont" >
     <div id = "cart"> 
@@ -144,7 +72,7 @@
             <div class = "quant-price">
 
                 <a class = quantity>0</a>
-                <!--  Will make the select sitution look better later-->
+                <!--  Will make the select look better later-->
                 <select>    
                     <option> 0 </option>
                     <option> 1 </option>
