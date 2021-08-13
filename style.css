@@ -349,11 +349,11 @@ button:hover{
 
 #work-container {
    grid-row-gap: 10px;
-   grid-template-rows: repeat(6, 50vh); 
+   grid-template-rows: (1fr,1fr,1fr,1fr,1fr,400vh); 
 }
 
 #work-container #div11 {
-    font-size: 9px;
+    font-size: 8.5px;
     transform:translate(0,-25%);
 }
 
