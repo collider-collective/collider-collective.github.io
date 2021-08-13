@@ -202,7 +202,7 @@ button:hover{
     width: 30vw;
     max-height: 30vh;
     margin-bottom: 5px;
-    }
+}
 
 #store-wrapper p{
     font-family: Helvetica;
@@ -315,12 +315,26 @@ button:hover{
 }
 
 #store-wrapper p{
-    font-size: 10px;
+    font-size: 8px;
+}
+
+.store-top {
+    justify-content: space-evenly;
+}
+
+.store-center {
+    justify-content: space-evenly;
+
+}
+
+.store-bottom {
+    justify-content: space-evenly;
 }
 
 .store-info{
     width: 100vw;
     max-height: 50vh;
+    justify-content: flex-start;
 }
 
 .store-bottom button {
