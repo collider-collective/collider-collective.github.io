@@ -18,17 +18,17 @@ a {
 }
 
 #water-flex{
-    display: flex;
-    flex-wrap: nowrap;
-    background: red;
-    position: absolute;
+    
+    
     top: 0px;
     width: 100vw;
+    height: 100vh;
     
     
 }
 
 #water-flex img{
+    transition-duration: 5s;
     opacity: 0;
     margin: 5px;
     max-width: 150px;
