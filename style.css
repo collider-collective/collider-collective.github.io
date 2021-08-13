@@ -354,6 +354,7 @@ button:hover{
 
 #work-container #div11 {
     font-size: 9px;
+    transform:translate(0,-30%);
 }
 
 
