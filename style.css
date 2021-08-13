@@ -113,11 +113,11 @@ button:hover{
     /*right: -80vw;*/
     right:0px;
     overflow-y: scroll;
-    background: rgb(233, 226, 226);
+    background: lightgray;
     transition-duration: 1s;
     border-left-style: solid;
-    border-width: 2.5px;
-    border-color: lightgray;
+    border-width: 1.5px;
+    border-color: grey;
 }
 
 #empty-cart{
@@ -132,11 +132,15 @@ button:hover{
 }
 
 .cart-item{
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
+    background: lightgray;
+    box-shadow: 5px 5px 5px grey;
+    
     
     
     
@@ -155,8 +159,8 @@ button:hover{
     font-family: Helvetica;
     height: 45px;
     border-style: solid;
-    border-width: 2.5px;
-    border-color: lightgray;
+    border-width: 1.5px;
+    border-color: gray;
     
     
 }
@@ -173,13 +177,14 @@ button:hover{
     height: 45px;
     border-style: solid;
     border-top: none;
-    border-width: 2.5px;
-    border-color: lightgray;
+    border-width: 1.5px;
+    border-color: gray;
 
 }
 
 .quant-cont{
     margin-left: 10px;
+    padding-right: 10px;
     display: flex;
     line-height: 45px;
     max-width: 70% ;
@@ -192,6 +197,7 @@ button:hover{
     position: relative;
     width: 25px;
     border-radius: 25px;
+    box-shadow: 2px 1px 2px grey;
 }
 
 .item-total{
