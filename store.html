@@ -27,18 +27,18 @@
     <div id = "store-container-top" class = "store-container">
         
         <!-- made a block div for the store info to sit in-->
-        <div class ="store-info" value = "150" name = "Windows (2021)" >
+        <div class ="store-info" value = "150" name = "1038 (2021)" >
             <div class="store-top">
-                <p>Adrian J. Song</p>
+                <p>Zachariah Micallef</p>
                 <p>(150.00 AUD)</p>
             </div>
 
             <div class="store-center">
-                <p>Windows (2021)</p>
+                <p>1038 (2021)</p>
             </div>
 
         <div  class="store-bottom">
-            <p>50 pg, 80gsm Japanese Handmade Paper</p>
+            <p>80 pg, 160GSM Matte, Coptic Bound</p>
             <p><button onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
@@ -46,12 +46,12 @@
         <div class = "store-images-cont">
             <div   class ="store-images">
                 <!-- no div needed, just img tags are fine-->
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
+                <img src="b1-min.jpg" data-original="bible1-min.jpg">
+                <img src="b2-min.jpg" data-original="bible2-min.jpg">
+                <img src="b3-min.jpg" data-original="bible3-min.jpg">
+                <img src="b4-min.jpg" data-original="bible4-min.jpg">
+                <img src="b5-min.jpg" data-original="bible5-min.jpg">
+                <img src="b6-min.jpg" data-original="bible6-min.jpg">
             </div>
         </div>
     </div>
@@ -77,12 +77,12 @@
         <div class = "store-images-cont">
             <div   class ="store-images">
                 <!-- no div needed, just img tags are fine-->
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
-                <img src="image-placeholder.jpg">
+                <img src="image-placeholder.jpg" data-original="image-placeholder.jpg">
+                <img src="image-placeholder.jpg" data-original="image-placeholder.jpg">
+                <img src="image-placeholder.jpg" data-original="image-placeholder.jpg">
+                <img src="image-placeholder.jpg" data-original="image-placeholder.jpg">
+                <img src="image-placeholder.jpg" data-original="image-placeholder.jpg">
+                <img src="image-placeholder.jpg" data-original="image-placeholder.jpg">
             </div>
         </div>
     </div>
@@ -145,7 +145,37 @@
 
 </div>
 
+<div class="modal">
+	<img src="" alt="" class="full-image">
+</div>
+
 </body>
+
+<!--Modal Script-->
+<script>
+
+    const modal = document.querySelector('.modal');
+    const previews = document.querySelectorAll('img');
+    const original = document.querySelector('.full-image');
+    
+    previews.forEach(preview => {
+        preview.addEventListener('click', () => {
+            modal.classList.add('open');
+            original.classList.add('open');
+            //Dynamic change text and image
+            const originalSrc = preview.getAttribute('data-original');
+            original.src = `${originalSrc}`
+        })
+    })
+    
+    modal.addEventListener('click', (e) => {
+        if(e.target.classList.contains('modal')){
+            modal.classList.remove('open');
+            original.classList.remove('open');
+        }
+    
+    })
+</script>
 
 <script>
         //remove this when page goes live
