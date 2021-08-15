@@ -396,4 +396,81 @@ updateCart()
     
 </script>
 
+
+
+<script>
+
+//creates order
+try {
+  const response = await client.ordersApi.createOrder({
+    order: {
+      locationId: 'L7F4K08YKA4PJ',
+      customerId: '002',
+      lineItems: [
+        {
+          name: 'ItemNAME',
+          quantity: '1',
+          catalogObjectId: 'OBJECT-ID',
+          itemType: 'ITEM'
+        },
+        {
+          name: 'Shipping',
+          quantity: '1',
+          catalogObjectId: '!object-ID',
+          itemType: 'CUSTOM_AMOUNT',
+          basePriceMoney: {
+            amount: 10,
+            currency: 'AUD'
+          }
+        }
+      ],
+      fulfillments: [
+        {
+          type: 'SHIPMENT',
+          state: 'RESERVED',
+          shipmentDetails: {
+            recipient: {
+              displayName: 'POSTAGE NAME',
+              emailAddress: 'EMAIL',
+              phoneNumber: 'PHONE',
+              address: {
+                addressLine1: 'Adress Line',
+                locality: 'NORTH MELBOURNE',
+                postalCode: '?',
+                country: 'AU',
+                firstName: '?',
+                lastName: '?',
+                organization: '?'
+              }
+            },
+            shippingNote: 'SHIPPIN NOTES'
+          }
+        }
+      ]
+    },
+    idempotencyKey: '05f9f0d0-af7c-426b-80da-15b539c415d7'
+  });
+
+  console.log(response.result);
+} catch(error) {
+  console.log(error);
+}
+
+try {
+  const response = await client.paymentsApi.createPayment({
+    sourceId: 'cnon:card-nonce-ok',
+    idempotencyKey: 'a8d65da6-e391-4243-8348-f6b892f34c02',
+    amountMoney: {
+      amount: '$amount',
+      currency: 'AUD'
+    },
+    orderId: 'ORDER ID response.'
+  });
+
+  console.log(response.result);
+} catch(error) {
+  console.log(error);
+}
+</script>
+
 </html>
