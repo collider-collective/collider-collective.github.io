@@ -126,12 +126,10 @@
             
             </div>-->
             
-            <div class = "subtotal">
-                <a>SUBTOTAL $</a><a>10</a>
+         
+            
+           
 
-            
-            </div>
-            
             <!-- 
             <div class = "subtotal">
              <a>POSTAGE $</a><a>10</a>
@@ -319,7 +317,25 @@
                     
                         quantPrice.appendChild(itemTotal);
 
-                        var subTotal = document.createElement("A");
+                       
+            
+            
+                }
+                
+            }
+               
+                   
+              
+        }
+        document.getElementById("button_cart").innerHTML = "Cart ("+ document.getElementsByClassName("cart-item").length + ")"  
+        if (document.getElementsByClassName("cart-item").length ==0){
+            var empty = document.createElement("H3");
+                empty.innerHTML = "YOUR CART IS EMPTY"
+                empty.className = "empty-cart";
+                cart.appendChild(empty);
+                
+        }
+        var subTotal = document.createElement("A");
                             subTotal.className = "subtotal";
                             
                             
@@ -339,23 +355,13 @@
                             subTotal.innerHTML = "SUB-TOTAL: $"+subTotalPrice;
 
                             cart.appendChild(subTotal);
-            
-            
-                }
 
-            }
-               
-                   
-              
-        }
-        document.getElementById("button_cart").innerHTML = "Cart ("+ document.getElementsByClassName("cart-item").length + ")"  
-        if (document.getElementsByClassName("cart-item").length ==0){
-            var empty = document.createElement("H3");
-                empty.innerHTML = "YOUR CART IS EMPTY"
-                empty.className = "empty-cart";
-                cart.appendChild(empty);
-                
-        }
+                            var checkout = document.createElement("BUTTON");
+                            checkout.className = "checkout";
+                            checkout.innerHTML = "CHECKOUT";
+                            checkout.setAttribute('onmouseover','boxSaddowOff(this)');
+                            checkout.setAttribute('onmouseout','boxSaddowOn(this, "2.5px 2.5px 1.5px grey")');
+                            cart.appendChild(checkout);
     }  
 
 
