@@ -54,9 +54,9 @@ header{
 
 #info {
     position:absolute;
-    width:95vw;
-    top:96%;
-    left:50%;
+    width:90vw;
+    top:3%;
+    left:52%;
     transform:translate(-50%,-50%);
     display:none;
 }
@@ -420,17 +420,21 @@ button:hover{
 
 #about {
     position: absolute;
-    width:80vw;
-    top:150%;
-    left:50%;
+    width:95vw;
+    top:830%;
+    left:52%;
     transform: translate(-50%,-50%);
 }
 
 #about p {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 4vw;
+    font-family: Helvetica;
+    font-size: 8vw;
     line-height: 1.2;
     font-weight: 400;
+}
+
+#about a {
+    font-style: italic;
 }
 
 
