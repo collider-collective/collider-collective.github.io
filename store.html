@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="js/colliderCart.js"></script>
+    <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
     <title>Collider: Store</title>
 </head>
 <body>
@@ -399,7 +400,21 @@ updateCart()
 
 
 <script>
+//catalog object id's
+const missingPersonsObjectId = "5QZYHTVZG5ZVY6BWCXZAW2VV";    
 
+document.addEventListener('DOMContentLoaded', async function () {
+//check inventory
+//function getInventory(CatalogObjectId){
+try {
+  const response = await client.inventoryApi.retrieveInventoryCount(CatalogObjectId);
+    console.log(result["quantity"]);
+} catch(error) {
+  console.log(error);
+}
+})
+
+getInventory(missingPersonsObjectId);
 //creates order
 try {
   const response = await client.ordersApi.createOrder({
