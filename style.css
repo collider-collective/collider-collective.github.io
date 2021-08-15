@@ -422,7 +422,7 @@ button:hover{
     position: absolute;
     width:95vw;
     top:200%;
-    left:52%;
+    left:50%;
     transform: translate(-50%,-50%);
 }
 
