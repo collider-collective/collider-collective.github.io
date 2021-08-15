@@ -293,23 +293,23 @@ button:hover{
 .store-top{
     display: flex;
     justify-content: space-between;
-    line-height: 8vh;
+    line-height: 4vh;
 }
 
 .store-center{
     display: flex;
     justify-content: space-between;
-    line-height: 8vh;
+    line-height: 4vh;
 }
 
 .store-bottom{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    line-height: 8vh;
+    line-height: 4vh;
 }
 
-.store-bottom button {
+.store-bottom button, .store-center button {
     position: relative;
     width:70px;
     font-size: 0.7vw;
