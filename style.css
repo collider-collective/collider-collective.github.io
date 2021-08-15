@@ -421,7 +421,7 @@ button:hover{
 #about {
     position: absolute;
     width:95vw;
-    top:200%;
+    top:830%;
     left:50%;
     transform: translate(-50%,-50%);
 }
