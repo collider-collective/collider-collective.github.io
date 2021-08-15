@@ -416,6 +416,24 @@ button:hover{
     transform:translate(-50%,-50%) scale(1);
 }
 
+/*About page*/
+
+#about {
+    position: absolute;
+    width:80vw;
+    top:150%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+#about p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4vw;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+
 
 @media only screen and (max-device-width : 1024px) {
 
