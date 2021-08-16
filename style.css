@@ -31,7 +31,7 @@ a {
 
 #water-flex img{
     transition-duration: 5s;
-    opacity: 0.05;
+    opacity: 1;
     margin: 5px;
     max-width: 150px;
     
