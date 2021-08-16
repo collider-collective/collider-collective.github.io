@@ -1,170 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="/app.css" rel="stylesheet" />
-    <link href="/dark-mode.css" rel="stylesheet" />
-    <script
-      type="text/javascript"
-      src="https://sandbox.web.squarecdn.com/v1/square.js"
-    ></script>
-    <script>
-      const appId = 'sandbox-sq0idb-zfsIR6PAqf5yOwTuE5WTvQ';
-      const locationId = 'L7F4K08YKA4PJ';
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
 
-      const darkModeCardStyle = {
-        '.input-container': {
-          borderColor: '#2D2D2D',
-          borderRadius: '6px',
-        },
-        '.input-container.is-focus': {
-          borderColor: '#006AFF',
-        },
-        '.input-container.is-error': {
-          borderColor: '#ff1600',
-        },
-        '.message-text': {
-          color: '#999999',
-        },
-        '.message-icon': {
-          color: '#999999',
-        },
-        '.message-text.is-error': {
-          color: '#ff1600',
-        },
-        '.message-icon.is-error': {
-          color: '#ff1600',
-        },
-        input: {
-          backgroundColor: '#2D2D2D',
-          color: '#FFFFFF',
-          fontFamily: 'helvetica neue, sans-serif',
-        },
-        'input::placeholder': {
-          color: '#999999',
-        },
-        'input.is-error': {
-          color: '#ff1600',
-        },
-      };
+<header>
 
-      async function initializeCard(payments) {
-        const card = await payments.card({
-          style: darkModeCardStyle,
+    <a href="store.html"><button  id="button_store">Store</button></a>
+    <a href="work.html"><button  id="button_work">Work</button></a>
+    <a href="about.html"><button  id="button_about">About</button></a>
+    
+</header>
+
+<div id = "pp"> <button> CHECKOUT </button>
+<div id = "p">
+<div id="smart-button-container">
+    <div style="text-align: center;">
+      <div id="paypal-button-container"></div>
+    </div>
+  </div></div></div>
+</body>
+
+
+
+<script>
+  function initPayPalButton() {
+    paypal.Buttons({
+      style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'paypal',
+        
+      },
+
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
         });
-        await card.attach('#card-container');
+      },
 
-        return card;
-      }
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(orderData) {
+          
+          // Full available details
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
-      async function createPayment(token) {
-        const body = JSON.stringify({
-          locationId,
-          sourceId: token,
+          // Show a success message within this page, e.g.
+          const element = document.getElementById('paypal-button-container');
+          element.innerHTML = '';
+          element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+          // Or go to another URL:  actions.redirect('thank_you.html');
+          
         });
+      },
 
-        const paymentResponse = await fetch('/payment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body,
-        });
-
-        if (paymentResponse.ok) {
-          return paymentResponse.json();
-        }
-
-        const errorBody = await paymentResponse.text();
-        throw new Error(errorBody);
+      onError: function(err) {
+        console.log(err);
       }
+    }).render('#paypal-button-container');
+  }
+  initPayPalButton();
+</script>
 
-      async function tokenize(paymentMethod) {
-        const tokenResult = await paymentMethod.tokenize();
-        if (tokenResult.status === 'OK') {
-          return tokenResult.token;
-        } else {
-          let errorMessage = `Tokenization failed with status: ${tokenResult.status}`;
-          if (tokenResult.errors) {
-            errorMessage += ` and errors: ${JSON.stringify(
-              tokenResult.errors
-            )}`;
-          }
 
-          throw new Error(errorMessage);
-        }
-      }
 
-      // status is either SUCCESS or FAILURE;
-      function displayPaymentResults(status) {
-        const statusContainer = document.getElementById(
-          'payment-status-container'
-        );
-        if (status === 'SUCCESS') {
-          statusContainer.classList.remove('is-failure');
-          statusContainer.classList.add('is-success');
-        } else {
-          statusContainer.classList.remove('is-success');
-          statusContainer.classList.add('is-failure');
-        }
-
-        statusContainer.style.visibility = 'visible';
-      }
-
-      document.addEventListener('DOMContentLoaded', async function () {
-        if (!window.Square) {
-          throw new Error('Square.js failed to load properly');
-        }
-
-        let payments;
-        try {
-          payments = window.Square.payments(appId, locationId);
-        } catch {
-          const statusContainer = document.getElementById(
-            'payment-status-container'
-          );
-          statusContainer.className = 'missing-credentials';
-          statusContainer.style.visibility = 'visible';
-          return;
-        }
-
-        let card;
-        try {
-          card = await initializeCard(payments);
-        } catch (e) {
-          console.error('Initializing Card failed', e);
-          return;
-        }
-
-        async function handlePaymentMethodSubmission(event, paymentMethod) {
-          event.preventDefault();
-
-          try {
-            // disable the submit button as we await tokenization and make a payment request.
-            cardButton.disabled = true;
-            const token = await tokenize(paymentMethod);
-            const paymentResults = await createPayment(token);
-            displayPaymentResults('SUCCESS');
-
-            console.debug('Payment Success', paymentResults);
-          } catch (e) {
-            cardButton.disabled = false;
-            displayPaymentResults('FAILURE');
-            console.error(e.message);
-          }
-        }
-
-        const cardButton = document.getElementById('card-button');
-        cardButton.addEventListener('click', async function (event) {
-          await handlePaymentMethodSubmission(event, card);
-        });
-      });
-    </script>
-  </head>
-  <body class="dark-mode">
-    <form id="payment-form">
-      <div id="card-container"></div>
-      <button id="card-button" type="button">Pay $1.00</button>
-    </form>
-    <div id="payment-status-container"></div>
-  </body>
 </html>

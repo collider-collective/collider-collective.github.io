@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="js/colliderCart.js"></script>
-    <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+    <script
+    src="https://www.paypal.com/sdk/js?client-id=Ab18YP2iUz2VelExL_Z4a0lbNTvRxSDcOW2ulKMseZOIideUIdJteCgOmiZ-ht1UGTorcIM7K8d3rCRY&currency=AUD&locale=en_AU" data-sdk-integration-source="button-factory"> //change client ID</script> 
+
+    
+
+
+
+    
     <title>Collider: Store</title>
 </head>
 <body>
@@ -98,57 +104,23 @@
 
 
     </div>   
-    <div id = "checkout-cont">
-        
-        <input type="NAME">
-
-    </div>  
+    
     <div id = "cart">
-  
-
-<!--
-        <h2 id = "empty-cart"> CART IS EMPTY </h2>
-
-        <div class = "cart-item">
-            <div class = "item-name-cont">
-                <a class = item-name> TEST ITEM </a>
-            </div>
-            <div class = "quant-price">
-
-                <a class = quantity>0</a>
-            Will make the select look better later
-                <select>    
-                    <option> 1 </option>
-                    <option> 2 </option>
-                    <option> 3 </option>
-                    <option> 4 </option>
-                    <option> 5 </option>
-                    <option> 6 </option>
-                    <option> 7 </option>
-                    <option> 8 </option>
-                    <option> 9 </option>
-                    <option> 10 </option>
-                </select>  
-            
-                <a class = "item-total" value = 10> $10</a>
-            
-            </div>-->
-            
-         
-            
-           
-
-            <!-- 
-            <div class = "subtotal">
-             <a>POSTAGE $</a><a>10</a>
-            </div>
-            
-        -->
-        
-
     </div>
+    <div id = "pp"> <button id = "checkout" onmouseover="boxSaddowOff(this)" onmouseout="boxSaddowOn(this,'2.5px 2.5px 1.5px gray')" > CHECKOUT </button>
+        <div id = "p">
+        <div id="smart-button-container">
+            <div style="text-align: center;">
+              <div id="paypal-button-container" onmouseover="boxSaddowOffid('checkout')" onmouseout="boxSaddowOnid('checkout','2.5px 2.5px 1.5px gray')"></div>
+            </div>
+          </div></div></div>
 
+   
 
+    
+    
+   
+</div>
 </div>
 
 <div class="modal">
@@ -193,7 +165,14 @@
         function boxSaddowOn(object,settings){
         object.style.boxShadow = settings;
         }
-        
+        function boxSaddowOffid(object){
+        document.getElementById(object).style.boxShadow = "0px 0px 0px white";
+        }
+        function boxSaddowOnid(object,settings){
+            document.getElementById(object).style.boxShadow = settings;
+        }
+
+      
         //When add to cart is clicked
         //check if local storage exist for item
 
@@ -299,7 +278,7 @@
                         var selectPlus = document.createElement("BUTTON");
                         selectPlus.className = "quant-selector";
                         selectPlus.innerHTML = "+";
-                        selectPlus.setAttribute('onclick','selector(this)')
+                        selectPlus.setAttribute('onclick','selector(this)');
                         selectPlus.setAttribute('onmouseover','boxSaddowOff(this)');
                         selectPlus.setAttribute('onmouseout','boxSaddowOn(this, "1.5px 1.5px 1.5px grey")');
                         quantCont.appendChild(selectPlus);
@@ -341,10 +320,12 @@
                 empty.innerHTML = "YOUR CART IS EMPTY"
                 empty.className = "empty-cart";
                 cart.appendChild(empty);
+                document.getElementById("pp").style.display = "none";
                 
         }
         else{
-            var subTotal = document.createElement("A");
+            document.getElementById("pp").style.display = "block";
+            var subTotal = document.createElement("DIV");
                             subTotal.className = "subtotal";
                             
                             
@@ -365,14 +346,34 @@
 
                             cart.appendChild(subTotal);
 
-                            var checkout = document.createElement("BUTTON");
-                            checkout.className = "checkout";
-                            checkout.innerHTML = "CHECKOUT";
-                            checkout.setAttribute('onmouseover','boxSaddowOff(this)');
-                            checkout.setAttribute('onmouseout','boxSaddowOn(this, "2.5px 2.5px 1.5px grey")');
-                            checkout.setAttribute('onclick', 'displayCheckOut()');
-                            cart.appendChild(checkout);
-        }                   
+                            var shipping = document.createElement("DIV");
+                                shipping.className = "subtotal";
+                                shipping.id = "get-shipping-price";
+                                shipping.innerHTML = " PARCEL POSTAGE: $15";
+                                cart.appendChild(shipping);
+
+                                totalPrice = document.createElement("DIV");
+                                totalPrice.className = "subtotal";
+                                totalPrice.id = "get-final-price"
+                                totalPrice.innerHTML = "TOTAL: $"+ String(parseInt(15) + parseInt(subTotalPrice));
+                                cart.appendChild(totalPrice);
+                            
+                            
+                            
+                            
+                            //clear paypal button
+                            document.getElementById("paypal-button-container").innerHTML = "";
+                            initPayPalButton();
+
+                          
+                            
+
+
+
+
+                            
+        }
+                          
     }  
 
 
@@ -397,6 +398,7 @@
         
         
         
+        
         updateCart()
         
     }
@@ -405,101 +407,118 @@
     
 updateCart()
     
-function displayCheckOut(){
-    document.getElementById("checkout-cont").style.display = "flex"
-}
+
 
 </script>
-
-
 
 <script>
-//catalog object id's
-const missingPersonsObjectId = "5QZYHTVZG5ZVY6BWCXZAW2VV";    
-
-document.addEventListener('DOMContentLoaded', async function () {
-//check inventory
-//function getInventory(CatalogObjectId){
-try {
-  const response = await client.inventoryApi.retrieveInventoryCount(CatalogObjectId);
-    console.log(result["quantity"]);
-} catch(error) {
-  console.log(error);
-}
-})
-
-getInventory(missingPersonsObjectId);
-//creates order
-try {
-  const response = await client.ordersApi.createOrder({
-    order: {
-      locationId: 'L7F4K08YKA4PJ',
-      customerId: '002',
-      lineItems: [
-        {
-          name: 'ItemNAME',
-          quantity: '1',
-          catalogObjectId: 'OBJECT-ID',
-          itemType: 'ITEM'
+    function initPayPalButton() {
+      
+		var paypalItemsArray = [];
+		
+		paypal.Buttons({
+        style: {
+        shape: 'pill',
+          color: 'white',
+          layout: 'vertical',
+          label: 'pay',
+          
         },
-        {
-          name: 'Shipping',
-          quantity: '1',
-          catalogObjectId: '!object-ID',
-          itemType: 'CUSTOM_AMOUNT',
-          basePriceMoney: {
-            amount: 10,
-            currency: 'AUD'
-          }
-        }
-      ],
-      fulfillments: [
-        {
-          type: 'SHIPMENT',
-          state: 'RESERVED',
-          shipmentDetails: {
-            recipient: {
-              displayName: 'POSTAGE NAME',
-              emailAddress: 'EMAIL',
-              phoneNumber: 'PHONE',
-              address: {
-                addressLine1: 'Adress Line',
-                locality: 'NORTH MELBOURNE',
-                postalCode: '?',
-                country: 'AU',
-                firstName: '?',
-                lastName: '?',
-                organization: '?'
-              }
-            },
-            shippingNote: 'SHIPPIN NOTES'
-          }
-        }
-      ]
+		  
+		 
+		  
+		  
+		  
+		  //get total
+		  
+		  
+		  //get shipping method
+		  
+		  
+
+        createOrder: function(data, actions) {
+          
+			//get items array
+		  
+		  
+		  items = document.getElementsByClassName("cart-item");
+          
+		  
+		
+			
+		  for (var i = 0; i < items.length; i++){
+		  
+		    paypalItemName = items[i].querySelector(".item-name").innerHTML;
+            
+		    paypalItemQuant = items[i].querySelector(".quantity").innerHTML;
+            
+			paypalItemTotalPrice = items[i].querySelector(".item-total").innerHTML;
+            
+            paypalItemTotalPrice = paypalItemTotalPrice.substring(1)
+		    paypalPrice = paypalItemTotalPrice / paypalItemQuant;
+	  
+			 paypalItemsArray.push({"name": paypalItemName,
+			"unit_amount": {
+            "currency_code": "AUD",
+            "value": paypalPrice},
+			"quantity": paypalItemQuant })
+		  
+		  
+		  }
+			
+          
+			
+			finalPrice = document.getElementById("get-final-price").innerHTML
+            finalPrice = parseFloat(String(finalPrice).substring(8))
+            shippingPrice = document.getElementById("get-shipping-price").innerHTML;
+			console.log(String(shippingPrice.substring(18)))
+            shippingPrice = parseFloat(String(shippingPrice.substring(18)))
+            
+            itemTotal = (finalPrice - shippingPrice);
+		
+			
+			return actions.order.create({
+            purchase_units: [{"description":"COLLIDER WEB STORE PURCHASE",
+							  "amount": {
+        "currency_code": "AUD",
+        "value": finalPrice,
+        "breakdown": {
+          "item_total": {
+            "currency_code": "AUD",
+            "value": itemTotal
+          },
+          "shipping": {
+            "currency_code": "AUD",
+            "value": shippingPrice
+          }}}
+							  
+							  
+							 ,"items": paypalItemsArray } ]
+			
+		  
+		  });
+        },
+			
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name + ": we're most greatful for the support");
+            // --> page after puchase
+            localStorage.clear()
+            updateCart()
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        },
+			onCancel: function(data, actions) {
     },
-    idempotencyKey: '05f9f0d0-af7c-426b-80da-15b539c415d7'
-  });
+		
+      }).render('#paypal-button-container');
+    }
+    
+  </script>
 
-  console.log(response.result);
-} catch(error) {
-  console.log(error);
-}
 
-try {
-  const response = await client.paymentsApi.createPayment({
-    sourceId: 'cnon:card-nonce-ok',
-    idempotencyKey: 'a8d65da6-e391-4243-8348-f6b892f34c02',
-    amountMoney: {
-      amount: '$amount',
-      currency: 'AUD'
-    },
-    orderId: 'ORDER ID response.'
-  });
-
-  console.log(response.result);
-} catch(error) {
-  console.log(error);
-}
-</script>
 
 </html>
