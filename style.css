@@ -55,8 +55,8 @@ header{
 #info {
     position:absolute;
     width:90vw;
-    top:3%;
-    left:52%;
+    top:95%;
+    left:50%;
     transform:translate(-50%,-50%);
     display:none;
 }
@@ -64,6 +64,8 @@ header{
 #info p {
     font-family: Helvetica;
     font-size: 11px;
+    text-align: center;
+
 }
 
 button{
@@ -442,18 +444,18 @@ paypal-button-container{
 
 #about {
     position: absolute;
-    width:95vw;
-    top:830%;
-    left:50%;
+    width:50vw;
+    top:85%;
+    left:70%;
     transform: translate(-50%,-50%);
     text-align:justify;
 }
 
 #about p {
     font-family: Helvetica;
-    font-size: 8vw;
+    font-size: 1.5vw;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 #about a {
