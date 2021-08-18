@@ -345,26 +345,26 @@ paypal-button-container{
 
 .store-left{
     display: flex;
-    line-height: 1.5vh;
+    line-height: 3vh;
     left:0;
     width:10vw;
     padding-left:20px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .store-mid{
     display: flex;
     flex-wrap:wrap;
     flex-direction: column;
-    line-height: 1.5vh;
+    line-height: 3vh;
     width:10vw;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .store-right{
     display: flex;
     flex-wrap: wrap;
-    line-height: 1.5vh;
+    line-height: 3vh;
     width:10vw;
     padding-left:20px;
 }
@@ -531,7 +531,8 @@ header {
     flex-wrap:wrap;
 }
 .store-right button {
-    font-size: 10px;
+    font-size: 8px;
+    width:60px;
     z-index:1;
     position:absolute;
 }
