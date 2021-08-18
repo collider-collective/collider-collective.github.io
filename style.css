@@ -50,7 +50,7 @@ header{
     top:0px;
     height: 35px;
     width: 100%;
-    margin-bottom: 10vw;
+    margin-bottom: 1vw;
     
 }
 
@@ -295,16 +295,16 @@ paypal-button-container{
 
 .store-container {
     display:flex;
-    width: 95vw;
-    min-height:25vh;
+    width: 100vw;
+    min-height:15vh;
     border-bottom:1px black solid;
 }
 
 .store-info{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30vw;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 50vw;
     max-height: 30vh;
     margin-bottom: 5px;
 }
@@ -329,26 +329,33 @@ paypal-button-container{
 
 }
 
-.store-top{
+.store-left{
     display: flex;
-    justify-content: space-between;
-    line-height: 4vh;
+    line-height: 1.5vh;
+    left:0;
+    width:10vw;
+    padding-left:20px;
+    padding-top: 10px;
 }
 
-.store-center{
+.store-mid{
     display: flex;
-    justify-content: space-between;
-    line-height: 4vh;
+    flex-wrap:wrap;
+    flex-direction: column;
+    line-height: 1.5vh;
+    width:10vw;
+    padding-top: 10px;
 }
 
-.store-bottom{
+.store-right{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    line-height: 4vh;
+    line-height: 1.5vh;
+    width:10vw;
+    padding-left:20px;
 }
 
-.store-bottom button, .store-center button {
+.store-right button {
     position: relative;
     width:70px;
     font-size: 0.7vw;
@@ -360,7 +367,8 @@ paypal-button-container{
 .store-images-cont{
     display: block;
     width: 100%;
-    min-height:25vh;
+    min-height:15vh;
+    padding-right: 20px;
     
 
 }
@@ -370,17 +378,17 @@ paypal-button-container{
     justify-content: flex-end;
     flex-wrap: wrap;
     float: right;
-    max-width: 50vw;
+    max-width: 30vw;
     
    
     
 }
 
 .store-images img {
-    min-width: 75px;
-    max-width:160px;
-    max-height:160px;
-    padding:15px;
+    min-width: 70px;
+    max-width:80px;
+    max-height:80px;
+    padding:10px;
     cursor:zoom-in;
 
 }
@@ -480,29 +488,40 @@ paypal-button-container{
 
 @media only screen and (max-device-width : 1024px) {
 
+header {
+    margin-bottom: 5vh;
+}
+
 #logo {
     width:30vw;
 }
 #store-wrapper p{
     font-size: 8px;
 }
-.store-top {
-    justify-content: space-evenly;
+.store-left {
+    padding:0;
+    width:25vw;
 }
-.store-center {
-    justify-content: space-evenly;
+.store-mid {
+    position:absolute;
+    padding:0;
+    left:25vw;
+    width:25vw;
 }
-.store-bottom {
-    justify-content: space-evenly;
+.store-right {
+    padding-left: 0;
+    width:25vw;
 }
 .store-info{
     width: 100vw;
     max-height: 50vh;
     justify-content: flex-start;
+    flex-wrap:wrap;
 }
-.store-bottom button {
+.store-right button {
     font-size: 10px;
     z-index:1;
+    position:absolute;
 }
 #button:hover {
     color:black;
