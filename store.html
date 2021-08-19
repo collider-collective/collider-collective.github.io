@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <title>COLLIDER: Store</title>
     <script src="https://www.paypal.com/sdk/js?client-id=Ab18YP2iUz2VelExL_Z4a0lbNTvRxSDcOW2ulKMseZOIideUIdJteCgOmiZ-ht1UGTorcIM7K8d3rCRY&currency=AUD&locale=en_AU" data-sdk-integration-source="button-factory"> //change client ID</script> 
-
+    <script type ="text/javascript" src="papaparse.min.js"></script>
     
 
 
@@ -60,7 +60,7 @@
             
 
         <div  class="store-right">
-            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+            <p class = "add-to-cart" ><button  onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -89,7 +89,7 @@
                 <br><br>Coptic Stitch, Swiss Bound
                 <br><br>First Ed., 1 of 2
                 <br><br>$80.00 AU
-                <br><br><a>↗ Info</a>
+                <br><br><a class = "info-button">↗ Info</a>
                 <div class = "item-info"> 
                     
                     <h4>Spectacle (2021)</h4>
@@ -117,7 +117,7 @@
             </div>
 
         <div  class="store-right">
-            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+            <p class = "add-to-cart" ><button  onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -150,7 +150,7 @@
             </div>
 
         <div  class="store-right">
-            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+            <p class = "add-to-cart" ><button  onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -182,7 +182,7 @@
             </div>
 
         <div  class="store-right">
-            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+            <p class = "add-to-cart" ><button  onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -214,7 +214,7 @@
             </div>
 
         <div  class="store-right">
-            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+            <p class = "add-to-cart" ><button  onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -247,7 +247,7 @@
             </div>
 
         <div  class="store-right">
-            <p><button onclick="addToCart(this)">Add to Cart</button></p>
+            <p class = "add-to-cart" ><button  onclick="addToCart(this)">Add to Cart</button></p>
         </div>
     </div>
         <!-- made a img-container as a block for the store-images flex box to sit in-->
@@ -296,6 +296,300 @@
 
 </body>
 
+<!--init inventory-->
+<script>
+// get current inventory --> check for sold out items --> remove add cart and replace w. "sold out" if so.
+
+function currentStoreInventory(results){
+    for (let i =1; results.length > i; i++){
+        console.log(results[i])
+
+
+        //check current local storage for items in cart
+        //if LS > current level set to current level 
+
+        //check for sold out items
+        //if current level == 0 add-to-cart.innerHTML =  "to sold out"
+        // how do I find the right elm?
+
+        //create a const for item that can be used as a max-value w. selector()
+    }
+};
+//get inventory from google sheets --> call currentStoreInventory on completion
+Papa.parse('https://docs.google.com/spreadsheets/d/e/2PACX-1vTpRXIrrDRRK59X0ZTd4lS9WYtr0Z0aU3UQVSOTKbSjJhpav_VOqAaPsZmsTCjUtN1yVdvHJro873pS/pub?output=csv'
+, {
+	delimiter: ",",	// auto-detect
+	newline: "",	// auto-detect
+	quoteChar: '"',
+	escapeChar: '"',
+	header: false,
+	transformHeader: undefined,
+	dynamicTyping: false,
+	preview: 0,
+	encoding: "",
+	worker: false,
+	comments: false,
+	step: undefined,
+	complete: 
+        
+        function (results) {
+            var data = results.data;
+            currentStoreInventory(data)},
+    
+    
+	error: undefined,
+	download: true,
+	downloadRequestHeaders: undefined,
+	downloadRequestBody: undefined,
+	skipEmptyLines: false,
+	chunk: undefined,
+	chunkSize: undefined,
+	fastMode: undefined,
+	beforeFirstChunk: undefined,
+	withCredentials: undefined,
+	transform: undefined,
+	
+})
+</script>
+<!-- cart js-->
+<script>
+    //Toggles cart visablily when cart-botton is clicked
+    //
+    cartButton = document.getElementById("button_cart");
+    cartButton.addEventListener("click", function() { 
+    cart =  document.getElementById('cart-cont')
+        
+        
+
+        if (cart.style.right == "0px"){
+            cart.style.right = "-90vw";
+        }
+        else{
+            cart.style.right = "0px";
+        }
+    })
+    //When add to cart is clicked
+    //check if local storage exist for item 
+function addToCart(object){
+
+    const item = new Array(object.parentNode.parentNode.parentNode.getAttribute("name"),object.parentNode.parentNode.parentNode.getAttribute("value"),1); 
+    //if local storage doesn't exist, initaillise value of 0
+    if (localStorage.getItem(object.parentNode.parentNode.parentNode.getAttribute("name")) == null) {
+        localStorage.setItem("item-"+object.parentNode.parentNode.parentNode.getAttribute("name"), item); 
+        }
+    updateCart()
+    }
+function updateCart(){
+
+        //clear cart contents
+        cart = document.getElementById("cart")
+        cart.innerHTML = '';
+
+       
+
+        for (var i = 0; i < localStorage.length; i++) {
+            //checks local storage for cart items (var i = 0; i < localStorage.length; i++) {
+        
+            if (localStorage.key(i).substr(0, 4) == "item") {
+            
+                itemKey = localStorage.key(i);
+                itemData = localStorage.getItem(itemKey);
+                itemData = itemData.split(",");
+                
+                //[3]=quant
+                
+                if (parseInt(itemData[2]) > 0 ){
+                    
+                    var cartItem = document.createElement("DIV");
+                    cartItem.className = "cart-item";
+                    cartItem.setAttribute('onmouseover','boxSaddowOff(this)');
+                    cartItem.setAttribute('onmouseout','boxSaddowOn(this, "5px 5px 5px grey")');
+                    cart.appendChild(cartItem);
+                    
+                    var itemNameCont  = document.createElement("DIV");
+                    itemNameCont.className = "item-name-cont";
+                    cartItem.appendChild(itemNameCont);
+                    
+                    
+                    var itemName = document.createElement("A");
+                    itemName.className = "item-name";
+                    itemName.innerHTML = itemData[0];
+                    itemNameCont.appendChild(itemName);
+                    
+                    var quantPrice = document.createElement("DIV");
+                    quantPrice.className = "quant-price";
+                    cartItem.appendChild(quantPrice);
+                    
+                    var quantCont = document.createElement("DIV");
+                    quantCont.className = "quant-cont";
+                    quantPrice.appendChild(quantCont);
+                    
+                    
+                    
+                    var selectMinus = document.createElement("BUTTON");
+                    selectMinus.className = "quant-selector";
+                    selectMinus.innerHTML = "-";
+                    selectMinus.setAttribute('onclick','selector(this)')
+                    selectMinus.setAttribute('onmouseover','boxSaddowOff(this)');
+                    selectMinus.setAttribute('onmouseout','boxSaddowOn(this, "1.5px 1.5px 1.5px grey")');
+                    
+                    quantCont.appendChild(selectMinus);
+                    
+
+                    var quantity = document.createElement("A");
+                    quantity.className = "quantity";
+                    quantity.innerHTML = itemData[2];
+                    quantCont.appendChild(quantity);
+
+                    var selectPlus = document.createElement("BUTTON");
+                    selectPlus.className = "quant-selector";
+                    selectPlus.innerHTML = "+";
+                    selectPlus.setAttribute('onclick','selector(this)');
+                    selectPlus.setAttribute('onmouseover','boxSaddowOff(this)');
+                    selectPlus.setAttribute('onmouseout','boxSaddowOn(this, "1.5px 1.5px 1.5px grey")');
+                    quantCont.appendChild(selectPlus);
+                    
+                
+                    
+            
+                
+                
+                
+                
+                
+                
+                    //add event listner for selection change --> update cart
+
+
+                    var itemTotal = document.createElement("A");
+                    itemTotal.className = "item-total";
+                
+                    //update get price
+                    var price = parseInt(itemData[2])*parseInt(itemData[1]);
+                    itemTotal.innerHTML = "$"+(price);
+                
+                    quantPrice.appendChild(itemTotal);
+
+                   
+        
+        
+            }
+            
+        }
+           
+               
+          
+    }
+    document.getElementById("button_cart").innerHTML = "Cart ("+ document.getElementsByClassName("cart-item").length + ")"  
+    if (document.getElementsByClassName("cart-item").length ==0){
+        var empty = document.createElement("H3");
+            empty.innerHTML = "YOUR CART IS EMPTY"
+            empty.className = "empty-cart";
+            cart.appendChild(empty);
+            document.getElementById("pp").style.display = "none";
+            
+    }
+    else{
+        document.getElementById("pp").style.display = "block";
+        var subTotal = document.createElement("DIV");
+                        subTotal.className = "subtotal";
+                        
+                        
+                        itemTotals = document.getElementsByClassName("item-total");
+                        
+                        subTotalPrice = 0;
+                        
+                        for (let i = 0; itemTotals.length > i; i++){
+                            
+                            x = itemTotals[i].innerHTML.substring(1);
+                            
+                        
+                            subTotalPrice = subTotalPrice + parseInt(x);
+
+
+                        }
+                        subTotal.innerHTML = "SUB-TOTAL: $"+subTotalPrice;
+
+                        cart.appendChild(subTotal);
+
+                        var shipping = document.createElement("DIV");
+                            shipping.className = "subtotal";
+                            shipping.id = "get-shipping-price";
+                            shipping.innerHTML = " PARCEL POSTAGE: $15";
+                            cart.appendChild(shipping);
+
+                            totalPrice = document.createElement("DIV");
+                            totalPrice.className = "subtotal";
+                            totalPrice.id = "get-final-price"
+                            totalPrice.innerHTML = "TOTAL: $"+ String(parseInt(15) + parseInt(subTotalPrice));
+                            cart.appendChild(totalPrice);
+                        
+                        
+                        
+                        
+                        //clear paypal button
+                        document.getElementById("paypal-button-container").innerHTML = "";
+                        initPayPalButton();
+
+                      
+                        
+
+
+
+
+                        
+    }
+                      
+}  
+
+function selector(object){
+
+    cartItem = object.parentElement.parentElement.parentElement;
+
+    cartItemName = cartItem.querySelector(".item-name").innerHTML;
+
+    localData = localStorage.getItem("item-"+cartItemName).split(",");
+
+    if(object.innerHTML == "+"){
+        localData[2] = parseInt(localData[2]) + 1; 
+    }
+    else{
+        localData[2] = parseInt(localData[2]) - 1;
+    }
+
+    localStorage.setItem("item-"+cartItemName, localData);
+    
+    
+    
+    
+    updateCart()
+    
+}
+
+
+
+updateCart()
+
+
+
+</script>
+<!--aesthetics js-->
+<script>
+function boxSaddowOff(object){
+        object.style.boxShadow = "0px 0px 0px white";
+        }
+function boxSaddowOn(object,settings){
+        object.style.boxShadow = settings;
+        }
+function boxSaddowOffid(object){
+        document.getElementById(object).style.boxShadow = "0px 0px 0px white";
+        }
+function boxSaddowOnid(object,settings){
+            document.getElementById(object).style.boxShadow = settings;
+        }
+
+
+</script>
 <!--Modal Script-->
 <script>
 
@@ -321,262 +615,7 @@
     
     })
 </script>
-
-<script>
-    
-        
-        function boxSaddowOff(object){
-        object.style.boxShadow = "0px 0px 0px white";
-        }
-        function boxSaddowOn(object,settings){
-        object.style.boxShadow = settings;
-        }
-        function boxSaddowOffid(object){
-        document.getElementById(object).style.boxShadow = "0px 0px 0px white";
-        }
-        function boxSaddowOnid(object,settings){
-            document.getElementById(object).style.boxShadow = settings;
-        }
-
-      
-        //When add to cart is clicked
-        //check if local storage exist for item
-
-        
-        function addToCart(object){
-
-        const item = new Array(object.parentNode.parentNode.parentNode.getAttribute("name"),object.parentNode.parentNode.parentNode.getAttribute("value"),1); 
-
-
-        //if local storage doesn't exist, initaillise value of 0
-        if (localStorage.getItem(object.parentNode.parentNode.parentNode.getAttribute("name")) == null) {
-            localStorage.setItem("item-"+object.parentNode.parentNode.parentNode.getAttribute("name"), item); 
-            
-
-        }
-        
-    
-        updateCart()
-        }
-
-
-
-
-        //Toggles cart visablily when cart-botton is clicked
-        //
-        cartButton = document.getElementById("button_cart");
-        cartButton.addEventListener("click", function() { 
-        cart =  document.getElementById('cart-cont')
-            
-            
-
-            if (cart.style.right == "0px"){
-                cart.style.right = "-90vw";
-            }
-            else{
-                cart.style.right = "0px";
-            }
-        })
-
-
-    function updateCart(){
-
-            //clear cart contents
-            cart = document.getElementById("cart")
-            cart.innerHTML = '';
-
-           
-
-            for (var i = 0; i < localStorage.length; i++) {
-                //checks local storage for cart items (var i = 0; i < localStorage.length; i++) {
-            
-                if (localStorage.key(i).substr(0, 4) == "item") {
-                
-                    itemKey = localStorage.key(i);
-                    itemData = localStorage.getItem(itemKey);
-                    itemData = itemData.split(",");
-                    
-                    //[3]=quant
-                    
-                    if (parseInt(itemData[2]) > 0 ){
-                        
-                        var cartItem = document.createElement("DIV");
-                        cartItem.className = "cart-item";
-                        cartItem.setAttribute('onmouseover','boxSaddowOff(this)');
-                        cartItem.setAttribute('onmouseout','boxSaddowOn(this, "5px 5px 5px grey")');
-                        cart.appendChild(cartItem);
-                        
-                        var itemNameCont  = document.createElement("DIV");
-                        itemNameCont.className = "item-name-cont";
-                        cartItem.appendChild(itemNameCont);
-                        
-                        
-                        var itemName = document.createElement("A");
-                        itemName.className = "item-name";
-                        itemName.innerHTML = itemData[0];
-                        itemNameCont.appendChild(itemName);
-                        
-                        var quantPrice = document.createElement("DIV");
-                        quantPrice.className = "quant-price";
-                        cartItem.appendChild(quantPrice);
-                        
-                        var quantCont = document.createElement("DIV");
-                        quantCont.className = "quant-cont";
-                        quantPrice.appendChild(quantCont);
-                        
-                        
-                        
-                        var selectMinus = document.createElement("BUTTON");
-                        selectMinus.className = "quant-selector";
-                        selectMinus.innerHTML = "-";
-                        selectMinus.setAttribute('onclick','selector(this)')
-                        selectMinus.setAttribute('onmouseover','boxSaddowOff(this)');
-                        selectMinus.setAttribute('onmouseout','boxSaddowOn(this, "1.5px 1.5px 1.5px grey")');
-                        
-                        quantCont.appendChild(selectMinus);
-                        
-
-                        var quantity = document.createElement("A");
-                        quantity.className = "quantity";
-                        quantity.innerHTML = itemData[2];
-                        quantCont.appendChild(quantity);
-
-                        var selectPlus = document.createElement("BUTTON");
-                        selectPlus.className = "quant-selector";
-                        selectPlus.innerHTML = "+";
-                        selectPlus.setAttribute('onclick','selector(this)');
-                        selectPlus.setAttribute('onmouseover','boxSaddowOff(this)');
-                        selectPlus.setAttribute('onmouseout','boxSaddowOn(this, "1.5px 1.5px 1.5px grey")');
-                        quantCont.appendChild(selectPlus);
-                        
-                    
-                        
-                
-                    
-                    
-                    
-                    
-                    
-                    
-                        //add event listner for selection change --> update cart
-
-
-                        var itemTotal = document.createElement("A");
-                        itemTotal.className = "item-total";
-                    
-                        //update get price
-                        var price = parseInt(itemData[2])*parseInt(itemData[1]);
-                        itemTotal.innerHTML = "$"+(price);
-                    
-                        quantPrice.appendChild(itemTotal);
-
-                       
-            
-            
-                }
-                
-            }
-               
-                   
-              
-        }
-        document.getElementById("button_cart").innerHTML = "Cart ("+ document.getElementsByClassName("cart-item").length + ")"  
-        if (document.getElementsByClassName("cart-item").length ==0){
-            var empty = document.createElement("H3");
-                empty.innerHTML = "YOUR CART IS EMPTY"
-                empty.className = "empty-cart";
-                cart.appendChild(empty);
-                document.getElementById("pp").style.display = "none";
-                
-        }
-        else{
-            document.getElementById("pp").style.display = "block";
-            var subTotal = document.createElement("DIV");
-                            subTotal.className = "subtotal";
-                            
-                            
-                            itemTotals = document.getElementsByClassName("item-total");
-                            
-                            subTotalPrice = 0;
-                            
-                            for (let i = 0; itemTotals.length > i; i++){
-                                
-                                x = itemTotals[i].innerHTML.substring(1);
-                                
-                            
-                                subTotalPrice = subTotalPrice + parseInt(x);
-
-
-                            }
-                            subTotal.innerHTML = "SUB-TOTAL: $"+subTotalPrice;
-
-                            cart.appendChild(subTotal);
-
-                            var shipping = document.createElement("DIV");
-                                shipping.className = "subtotal";
-                                shipping.id = "get-shipping-price";
-                                shipping.innerHTML = " PARCEL POSTAGE: $15";
-                                cart.appendChild(shipping);
-
-                                totalPrice = document.createElement("DIV");
-                                totalPrice.className = "subtotal";
-                                totalPrice.id = "get-final-price"
-                                totalPrice.innerHTML = "TOTAL: $"+ String(parseInt(15) + parseInt(subTotalPrice));
-                                cart.appendChild(totalPrice);
-                            
-                            
-                            
-                            
-                            //clear paypal button
-                            document.getElementById("paypal-button-container").innerHTML = "";
-                            initPayPalButton();
-
-                          
-                            
-
-
-
-
-                            
-        }
-                          
-    }  
-
-
-    function selector(object){
-
-        cartItem = object.parentElement.parentElement.parentElement;
-
-        
-
-        cartItemName = cartItem.querySelector(".item-name").innerHTML;
-
-        localData = localStorage.getItem("item-"+cartItemName).split(",");
-
-        if(object.innerHTML == "+"){
-            localData[2] = parseInt(localData[2]) + 1; 
-        }
-        else{
-            localData[2] = parseInt(localData[2]) - 1;
-        }
-
-        localStorage.setItem("item-"+cartItemName, localData);
-        
-        
-        
-        
-        updateCart()
-        
-    }
-
-
-    
-updateCart()
-    
-
-
-</script>
-
+<!-- Paypal js-->
 <script>
     function initPayPalButton() {
       
@@ -683,7 +722,7 @@ updateCart()
       }).render('#paypal-button-container');
     }
     
-  </script>
+</script>
 
 
 
