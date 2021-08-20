@@ -266,7 +266,7 @@ paypal-button-container{
     border-width: 1.5px;
     border-color: gray;
     background: lightgray;
-    box-shadow: 1.5px 1.5px 1.5px grey;
+    box-shadow: 1.5px 1.5px 6px grey;
     z-index: 5;
     
 }
