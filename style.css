@@ -250,21 +250,25 @@ paypal-button-container{
     margin-left: 20px;
 
 }
-
+.info-button{
+    cursor: pointer;
+}
 .item-info{
+    display: none;
     padding: 20px;
     position: fixed;
-    
+    text-align: justify;
+    top:10vh;
     left: 30vw;
     width: 20vw;
     min-width: 200px;
-    
     border-style: solid;
     border-width: 1.5px;
     border-color: gray;
     background: lightgray;
     box-shadow: 1.5px 1.5px 1.5px grey;
     z-index: 5;
+    
 }
  .quant-price{
     display: flex;
