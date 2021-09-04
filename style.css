@@ -511,9 +511,9 @@ paypal-button-container{
 }
 
 #about p {
-    font-family: Helvetica;
+    font-family: Times;
     font-size: 0.8vw;
-    font-weight: 300;
+    font-weight: 200;
     text-align: justify;
 }
 
