@@ -572,4 +572,18 @@ header {
 #button:hover {
     color:black;
 }
+
+#about {
+    
+    width:90vw;
+    margin-left: 50%;
+    transform:translate(-50%,0)
+}
+
+#about p {
+    font-family: Times;
+    font-size: 3.5vw;
+    font-weight: 200;
+    text-align: justify;
+}
 }
