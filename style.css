@@ -505,19 +505,28 @@ paypal-button-container{
 
 #about {
     
-    width:40vw;
-    margin-left: 0;
+    width:30vw;
+    margin-left: 50%;
+    transform:translate(-50%,0)
 }
 
 #about p {
     font-family: Helvetica;
-    font-size: 1vw;
-    line-height: 1.2;
-    font-weight: 200;
+    font-size: 0.8vw;
+    font-weight: 300;
+    text-align: justify;
+}
+
+#about #title {
+    text-align: center;
 }
 
 #about a {
-    font-style: italic;
+    text-decoration: underline;
+}
+
+#about img {
+    width:75%;
 }
 
 
