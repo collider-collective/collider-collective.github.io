@@ -328,15 +328,12 @@ paypal-button-container{
     transition-duration: 2s;
 }
 
-#store-container-top{
-    border-top:1px black solid;
-}
 
 .store-container {
     display:flex;
     width: 100vw;
     min-height:15vh;
-    border-bottom:1px black solid;
+    border-top:1px black solid;
 }
 
 .store-info{
@@ -583,7 +580,7 @@ header {
 .store-mid {
     position:absolute;
     padding:0;
-    left:25vw;
+    left:35vw;
     width:25vw;
 }
 .store-right {
@@ -659,6 +656,10 @@ header {
 
 #work-container img {
     margin-bottom: 5vh;
+}
+
+.item-info h4 {
+    font-size: 12px;
 }
 
 }
