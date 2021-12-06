@@ -525,18 +525,49 @@ paypal-button-container{
 
 /*About page*/
 
-#about {
-    
-    width:30vw;
-    margin-left: 50%;
-    transform:translate(-50%,0)
+#about-1 {
+    position:absolute;
+    top:0;
+    width:18vw;
+}
+
+#about-2 {
+    position:absolute;
+    top:0;
+    width:18vw;
+    left:20vw;
+}
+
+#about-3 {
+    position:absolute;
+    top:0;
+    width:18vw;
+    left:40vw;
+}
+
+#about-4 {
+    position:absolute;
+    top:0;
+    width:18vw;
+    left:60vw;
+}
+
+@font-face {
+    font-family: Nimbus;
+    src: url(Nimbus-Sans-D-OT-Light_32752.woff);
+}
+
+@font-face {
+    font-family: Neue;
+    src: url(NeueHaasDisplayRoman.woff);
 }
 
 #about p {
-    font-family: Times;
+    font-family: Nimbus;
     font-size: 0.8vw;
-    font-weight: 200;
-    text-align: justify;
+    font-weight: 400;
+    line-height: 1.1;
+    overflow-y: hidden;
 }
 
 #about #title {
@@ -603,18 +634,35 @@ header {
     color:black;
 }
 
-#about {
-    
+#about-1 {
+    position:relative;
     width:90vw;
-    margin-left: 50%;
+    left: 50%;
+    transform:translate(-50%,0)
+}
+#about-2 {
+    position:relative;
+    width:90vw;
+    left: 50%;
+    transform:translate(-50%,0)
+}
+#about-3 {
+    position:relative;
+    width:90vw;
+    left: 50%;
+    transform:translate(-50%,0)
+}
+#about-4 {
+    position:relative;
+    width:90vw;
+    left: 50%;
     transform:translate(-50%,0)
 }
 
 #about p {
-    font-family: Times;
+    font-family: Nimbus;
     font-size: 3.5vw;
     font-weight: 200;
-    text-align: justify;
 }
 
 .links {
