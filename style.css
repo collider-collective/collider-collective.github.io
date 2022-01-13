@@ -528,28 +528,28 @@ paypal-button-container{
 #about-1 {
     position:absolute;
     top:0;
-    width:18vw;
+    width:23vw;
 }
 
 #about-2 {
     position:absolute;
     top:0;
-    width:18vw;
-    left:20vw;
+    width:23vw;
+    left:25vw;
 }
 
 #about-3 {
     position:absolute;
     top:0;
-    width:18vw;
-    left:40vw;
+    width:23vw;
+    left:50vw;
 }
 
 #about-4 {
     position:absolute;
     top:0;
-    width:18vw;
-    left:60vw;
+    width:23vw;
+    left:75vw;
 }
 
 @font-face {
@@ -566,7 +566,7 @@ paypal-button-container{
     font-family: Nimbus;
     font-size: 0.8vw;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.0;
     overflow-y: hidden;
 }
 
@@ -576,10 +576,7 @@ paypal-button-container{
 
 #about a {
     text-decoration: underline;
-}
-
-#about img {
-    width:75%;
+    line-height: 1.0;
 }
 
 #mobile-caption {
