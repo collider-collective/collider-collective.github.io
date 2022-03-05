@@ -1,4 +1,4 @@
-* {
+/* * {
     overflow-x:hidden;
     
 }
@@ -59,6 +59,7 @@ a {
 
 
 */
+/*
 header{
     display: block;
     top:0px;
@@ -465,7 +466,7 @@ paypal-button-container{
 
 /* WORKS PAGE 
 */
-
+/*
 .work{
     transition-duration: 10s;
     
@@ -489,7 +490,7 @@ paypal-button-container{
 
 
 
-/* Modal Styling */
+/* Modal Styling *//*
 
 .modal {
     background: rgba(0, 0, 0, 0.6); 
@@ -524,7 +525,7 @@ paypal-button-container{
 }
 
 /*About page*/
-
+/*
 #about-1 {
     position:absolute;
     top:0;
@@ -550,47 +551,43 @@ paypal-button-container{
     top:0;
     width:23vw;
     left:75vw;
+} */
+
+* {
+    text-rendering: geometricPrecision;
 }
 
-@font-face {
-    font-family: Nimbus;
-    src: url(Nimbus-Sans-D-OT-Light_32752.woff);
+html {
+    background: rgb(255, 255, 255);
+    }
+
+body {
+    margin: 0 0 0 0;
+    padding: 0;
+    font-family: Times New Roman;
 }
 
-@font-face {
-    font-family: Neue;
-    src: url(NeueHaasDisplayRoman.woff);
+.content {
+    padding:20px;
+    font-size: 0.8em;
+    position:absolute;
 }
 
-#about p {
-    font-family: Nimbus;
-    font-size: 0.8vw;
-    font-weight: 400;
-    line-height: 1.0;
-    overflow-y: hidden;
+.content a {
+    color:black;
 }
 
-#about #title {
-    text-align: center;
+.content-b {
+    padding:20px;
+    font-size: 0.8em;
+    position:absolute;
 }
 
-#about a {
-    text-decoration: underline;
-    line-height: 1.0;
-}
-
-#mobile-caption {
-    display:none;
-}
-
-.mobile-info {
-    display:none;
-}
 
 
 
 @media only screen and (max-device-width : 1024px) {
-
+/* 
 header {
     margin-bottom: 5vh;
 }
@@ -707,4 +704,5 @@ header {
     font-size: 12px;
 }
 
+ */
 }
